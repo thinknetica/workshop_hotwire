@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       reset_session
-      cookies.signed.permanent[:user_id] = { value: @user.id, httponly: true }
+      cookies.signed.permanent[:user_id] = {value: @user.id, httponly: true}
 
       redirect_to root_path, notice: "Welcome! You have signed up successfully"
     else
@@ -17,7 +17,8 @@ class RegistrationsController < ApplicationController
   end
 
   private
-    def user_params
-      params.permit(:username, :password, :password_confirmation)
-    end
+
+  def user_params
+    params.permit(:username, :password, :password_confirmation)
+  end
 end

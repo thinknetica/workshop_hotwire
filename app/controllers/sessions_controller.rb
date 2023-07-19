@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       reset_session
-      cookies.signed.permanent[:user_id] = { value: user.id, httponly: true }
+      cookies.signed.permanent[:user_id] = {value: user.id, httponly: true}
 
       redirect_to root_path, notice: "Signed in successfully"
     else

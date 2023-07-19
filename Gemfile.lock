@@ -100,6 +100,7 @@ GEM
   specs:
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    ast (2.4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -147,6 +148,9 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    json (2.6.3)
+    language_server-protocol (3.17.0.3)
+    lint_roller (1.1.0)
     litestack (0.2.6)
       erubi
       hanami-router
@@ -184,6 +188,10 @@ GEM
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     oj (3.15.0)
+    parallel (1.23.0)
+    parser (3.2.2.3)
+      ast (~> 2.4.1)
+      racc
     public_suffix (5.0.3)
     puma (6.3.0)
       nio4r (~> 2.0)
@@ -203,10 +211,32 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
+    rexml (3.2.5)
+    rubocop (1.52.1)
+      json (~> 2.3)
+      parallel (~> 1.10)
+      parser (>= 3.2.2.3)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.28.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 3.0)
+    rubocop-ast (1.29.0)
+      parser (>= 3.2.1.0)
+    rubocop-performance (1.18.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.20.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+    ruby-progressbar (1.13.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -217,6 +247,18 @@ GEM
     sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
     sqlite3 (1.6.3-x86_64-linux)
+    standard (1.30.1)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.52.0)
+      standard-custom (~> 1.0.0)
+      standard-performance (~> 1.1.0)
+    standard-custom (1.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.50)
+    standard-performance (1.1.2)
+      lint_roller (~> 1.1)
+      rubocop-performance (~> 1.18.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-aarch64-linux)
@@ -234,6 +276,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.4.2)
     url_mount (0.2.1)
       rack
     web-console (4.2.0)
@@ -264,7 +307,9 @@ DEPENDENCIES
   litestack
   puma (~> 6.0)
   rails!
+  rubocop-rails!
   sprockets-rails
+  standard (~> 1.28)!
   stimulus-rails
   tailwindcss-rails
   turbo-rails

@@ -1,0 +1,4 @@
+source "https://rubygems.org"
+
+gem "rubocop-rails"
+gem "standard", "~> 1.28"

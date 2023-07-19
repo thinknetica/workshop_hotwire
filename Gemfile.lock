@@ -131,7 +131,7 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
-    freezolite (0.2.0)
+    freezolite (0.3.0)
       require-hooks (~> 0.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -186,6 +186,8 @@ GEM
     nokogiri (1.15.3-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
@@ -249,6 +251,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
+    sqlite3 (1.6.3-x86_64-darwin)
     sqlite3 (1.6.3-x86_64-linux)
     standard (1.30.1)
       language_server-protocol (~> 3.17.0.2)
@@ -267,6 +270,8 @@ GEM
     tailwindcss-rails (2.0.30-aarch64-linux)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.30-x86_64-darwin)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
@@ -298,6 +303,10 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-21
+  arm64-darwin-22
+  x86_64-darwin-20
+  x86_64-darwin-21
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES

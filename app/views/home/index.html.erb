@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+
+<p>Signed in as <%= current_user&.username || 'anonymous user' %></p>
+
+<br>
+
+<%= button_to "Log out", sign_out_path, method: :delete %>

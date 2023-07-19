@@ -1,0 +1,31 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+      BUNDLE_FROZEN: true
+      CI: true
+      RAILS_ENV: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libsqlite3
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsqlite3-dev
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.2
+          bundler-cache: true
+      - name: Run tests
+        run: |
+          bundle exec rails db:test:prepare
+          bundle exec rails test

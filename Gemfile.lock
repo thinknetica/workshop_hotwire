@@ -131,6 +131,8 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
+    freezolite (0.2.0)
+      require-hooks (~> 0.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hanami-router (0.6.2)
@@ -216,6 +218,7 @@ GEM
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
+    require-hooks (0.1.0)
     rexml (3.2.5)
     rubocop (1.52.1)
       json (~> 2.3)
@@ -303,13 +306,14 @@ DEPENDENCIES
   capybara
   cuprite
   debug
+  freezolite
   importmap-rails
   litestack
   puma (~> 6.0)
   rails!
-  rubocop-rails!
+  rubocop-rails
   sprockets-rails
-  standard (~> 1.28)!
+  standard (~> 1.28)
   stimulus-rails
   tailwindcss-rails
   turbo-rails

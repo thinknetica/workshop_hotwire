@@ -68,3 +68,7 @@
 .player--timeline-progress {
   @apply bg-secondary h-full absolute left-0;
 }
+
+.player--radio {
+  @apply flex flex-row items-end mr-4;
+}

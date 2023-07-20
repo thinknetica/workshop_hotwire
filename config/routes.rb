@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     patch :play, on: :member
   end
 
-  resources :stations, only: [:show]
-  resource :station, only: [:show, :update], as: :my_station
+  resource :live_station, only: [:show, :update, :edit, :new, :create] do
+    resources :tracks, only: [:create, :destroy], module: :live_station
+  end
 
   root "home#index"
 end

@@ -1,13 +1,18 @@
 <%# locals: () -%>
 <nav class="nav">
-  <div class="nav--left">
+  <%= link_to root_path, class: "nav--left" do %>
     <div class="nav--logo"></div>
     <h1 class="nav--title">Pencil MC</h1>
-  </div>
+  <% end %>
   <div class="nav--mid">
     <%- if current_user -%>
       <%= link_to "Home", root_path, class: "nav--menu" %>
-      <%= link_to "My Station", my_station_path, class: "nav--menu" %>
+      <%= link_to live_station_path, class: "nav--menu" do %>
+        <span>My Station</span>
+        <% if current_user.live_station&.live? %>
+          <span class="track--playing-indicator"></span>
+        <% end %>
+      <% end %>
     <%- end -%>
   </div>
   <div class="nav--right">

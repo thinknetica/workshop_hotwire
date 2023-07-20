@@ -1,3 +1,10 @@
+<% if @live_stations.any? %>
+  <h2 class="mt-4 text-header-2">Live</h2>
+  <div class="albums-row">
+    <%= render @live_stations %>
+  </div>
+<% end %>
+
 <h2 class="mt-4 text-header-2">New Arrivals</h2>
 
 <div class="albums-grid">

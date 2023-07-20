@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_07_20_022050) do
+ActiveRecord::Schema[7.1].define(version: 2023_07_20_150910) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -73,6 +73,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_20_022050) do
     t.index ["user_id"], name: "index_listenings_on_user_id"
   end
 
+  create_table "live_station_tracks", force: :cascade do |t|
+    t.integer "live_station_id", null: false
+    t.integer "track_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["live_station_id"], name: "index_live_station_tracks_on_live_station_id"
+    t.index ["track_id"], name: "index_live_station_tracks_on_track_id"
+  end
+
+  create_table "live_stations", force: :cascade do |t|
+    t.string "name"
+    t.boolean "live", default: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_live_stations_on_user_id", unique: true
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.text "title", null: false
     t.integer "position", null: false
@@ -97,5 +115,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_20_022050) do
   add_foreign_key "albums", "artists"
   add_foreign_key "listenings", "tracks"
   add_foreign_key "listenings", "users"
+  add_foreign_key "live_station_tracks", "live_stations"
+  add_foreign_key "live_station_tracks", "tracks"
+  add_foreign_key "live_stations", "users"
   add_foreign_key "tracks", "albums"
 end

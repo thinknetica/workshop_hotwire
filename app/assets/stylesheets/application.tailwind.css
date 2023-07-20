@@ -22,11 +22,7 @@
 }
 
 .main {
-  @apply h-full p-4 overflow-hidden text-plain;
-}
-
-body[has-aside] .main {
-  @apply w-2/3;
+  @apply h-full p-4 overflow-x-hidden text-plain w-2/3;
 }
 
 .aside {
@@ -63,6 +59,10 @@ body[has-aside] .main {
 
 .button-primary {
   @apply bg-primary text-white cursor-pointer;
+}
+
+.button-secondary {
+  @apply bg-white text-secondary border-secondary border cursor-pointer;
 }
 
 .input {

@@ -1,0 +1,12 @@
+<div class="artist-header">
+  <div class="artist-info">
+    <div class="flex items-center">
+      <%= form_for @station, url: live_station_path do |f| %>
+        <%= f.text_field :name, class: "input mt-2" %>
+        <%= f.submit "Create", class: "button button-primary mt-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">

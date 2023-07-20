@@ -1,9 +1,9 @@
-<%# locals: (album:, album_counter: nil, album_iteration: nil) -%>
+<%# locals: (live_station:, live_station_counter: nil, live_station_iteration: nil) -%>
 <div class="album">
   <div class="album--content">
     <div class="album--cover">
       <div class="album--controls-container">
-        <%= link_to params.to_unsafe_h.merge(album_id: album.id), class: "album--controls" do %>
+        <%= link_to params.to_unsafe_h.merge(station_id: live_station.id), class: "album--controls" do %>
           <span class="album--play">
             <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
@@ -12,12 +12,11 @@
         <% end %>
       </div>
       <div class="album--image">
-        <% if album.cover.attached? %>
-          <%= image_tag album.cover %>
+        <% if live_station.cover.attached? %>
+          <%= image_tag live_station.cover %>
         <% end %>
       </div>
     </div>
-    <%= link_to album.title, album_path(album), class: "album--title" %>
-    <%= link_to album.artist.name, artist_path(album.artist), class: "album--author" %>
+    <span class="album--title"><%= live_station.name %></span>
   </div>
 </div>

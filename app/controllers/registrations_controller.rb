@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  layout "core"
+
   def new
     @user = User.new
   end

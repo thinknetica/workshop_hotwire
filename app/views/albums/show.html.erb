@@ -1,0 +1,19 @@
+<div class="artist-header">
+  <% if @album.cover.attached? %>
+    <div class="album-image">
+      <%= image_tag @album.cover %>
+    </div>
+  <% end %>
+  <div class="artist-info">
+    <div class="flex flex-row items-center">
+      <h2 class="text-header-3"><%= @album.title %></h2>
+    </div>
+    <%= link_to @album.artist.name, artist_path(@album.artist), class: "text-header-4 text-secondary hover:text-black transition-color" %>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<ul class="tracks mt-2">
+  <%= render @album.tracks, enqueueble: true %>
+</ul>

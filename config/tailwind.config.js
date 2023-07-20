@@ -1,23 +1,38 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
-    './public/*.html',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    "./public/*.html",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/views/**/*.{erb,haml,html,slim}",
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#F39237",
+        secondary: "#BF1363",
+        bluish: "#0E79B2",
+        greenish: "#88AD71",
+      },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        "header-1": ["56px", { lineHeight: "64px" }],
+        "header-2": ["32px", { lineHeight: "40px" }],
+        "header-3": ["24px", { lineHeight: "32px" }],
+        "header-4": ["16px", { lineHeight: "24px" }],
+        plain: ["18px", { lineHeight: "24px" }],
+        small: ["16px", { lineHeight: "24px" }],
+        xsmall: ["14px", { lineHeight: "20px" }],
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-  ]
-}
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
+  ],
+};

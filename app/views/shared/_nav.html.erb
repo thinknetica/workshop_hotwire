@@ -1,0 +1,22 @@
+<%# locals: () -%>
+<nav class="nav">
+  <div class="nav--left">
+    <div class="nav--logo"></div>
+    <h1 class="nav--title">Pencil MC</h1>
+  </div>
+  <div class="nav--mid">
+    <%- if current_user -%>
+      <%= link_to "Home", root_path, class: "nav--menu" %>
+      <%= link_to "My Station", my_station_path, class: "nav--menu" %>
+    <%- end -%>
+  </div>
+  <div class="nav--right">
+    <%- if current_user -%>
+      <span class="nav--username"><%= User::PREFIX + current_user.username %></span>
+      <%= button_to "Sign out", sign_out_path, method: :delete, class: "nav--btn--outlined ml-2" %>
+    <%- else- %>
+      <%= link_to "Sign up", sign_up_path, class: "nav--btn--outlined" %>
+      <%= link_to "Log in", sign_in_path, class: "nav--btn ml-2" %>
+    <%- end -%>
+  </div>
+</nav>

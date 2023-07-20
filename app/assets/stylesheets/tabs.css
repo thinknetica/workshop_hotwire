@@ -1,0 +1,23 @@
+.tabs {
+  @apply w-full border-b border-gray-200 flex text-plain;
+}
+
+.tab {
+  @apply inline-block px-4 text-plain border-b-2 border-white transition-colors;
+}
+
+.tab a {
+  @apply text-gray-600 hover:text-black text-small pb-[2px];
+}
+
+.tab-active {
+  @apply border-primary border-b-2;
+}
+
+.tab-active a {
+  @apply text-black hover:text-primary transition-colors;
+}
+
+.tab-content {
+  @apply mt-4;
+}

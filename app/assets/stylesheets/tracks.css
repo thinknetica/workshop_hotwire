@@ -1,0 +1,46 @@
+
+.track {
+  @apply flex flex-row py-1 text-xsmall;
+}
+
+.track--number {
+  @apply  text-gray-600 w-6 text-right mr-2;
+}
+
+@keyframes track-playing {
+  0% {
+    transform: scale(0.75);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+}
+
+.track--playing-indicator {
+  @apply relative inline-flex rounded-full h-3 w-3 bg-secondary;
+
+  animation: track-playing 1s infinite;
+}
+
+.track--title {
+  @apply flex-grow truncate text-black hover:text-secondary;
+}
+
+.track--actions {
+  @apply invisible text-secondary;
+}
+
+.track--action > svg {
+  @apply h-5 align-middle inline;
+}
+
+.track:hover > .track--actions {
+  @apply visible;
+}
+
+.track--duration {
+  @apply text-gray-600 self-end w-10 ml-2 text-right;
+}

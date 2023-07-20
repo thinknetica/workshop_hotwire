@@ -1,35 +1,29 @@
-<h1>Sign up</h1>
-
-<%= form_with(url: sign_up_path) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="main bg-primary">
+  <div class="login-form mt-20">
+    <div class="login-form--back">
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username, value: @user.username, required: true, autofocus: true, autocomplete: "username" %>
+    <div class="login-form--content">
+      <div class="login-form--logo">
+      </div>
+      <h2 class="text-header-2 text-center">Welcome back!</h2>
+      <%= form_with(url: sign_up_path) do |f| %>
+        <% if @user.errors.any? %>
+          <div>
+            <ul>
+              <% @user.errors.each do |error| %>
+                <li class="text-secondary text-xsmall"><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.text_field :username, value: @user.username, require: true, autofocus: true, autocomplete: "username", class: "input mt-2", placeholder: "Username" %>
+        <%= f.password_field :password, required: true, autocomplete: "new-password", class: "input mt-2", placeholder: "Password" %>
+         <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "input mt-2", placeholder: "Confirmation" %>
+        <div class="flex flex-row justify-between items-baseline">
+          <%= f.submit "Sign up", class: "button button-primary mt-2" %>
+          <%= link_to "Log in", sign_in_path, class: "text-small opacity-50 hover:opacity-100" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
-    <div>12 characters minimum.</div>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
-  </div>
-
-  <div>
-    <%= form.submit "Sign up" %>
-  </div>
-<% end %>
+</div>

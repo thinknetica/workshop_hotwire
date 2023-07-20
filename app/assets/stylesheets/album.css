@@ -1,0 +1,87 @@
+.albums-row {
+  @apply -mx-3 pt-2 overflow-x-scroll flex-row flex relative;
+}
+
+.albums-grid {
+  @apply -mx-3 pt-2 flex flex-wrap relative;
+}
+
+.albums-row .album:nth-child(4n), .albums-grid .album:nth-child(4n) {
+  @apply bg-secondary bg-opacity-10 hover:bg-opacity-30;
+}
+
+.albums-row .album:nth-child(4n+1), .albums-grid .album:nth-child(4n+1) {
+  @apply bg-bluish bg-opacity-10 hover:bg-opacity-30;
+}
+
+.albums-row .album:nth-child(4n+2), .albums-grid .album:nth-child(4n+2) {
+  @apply bg-primary bg-opacity-10 hover:bg-opacity-30;
+}
+
+.albums-row .album:nth-child(4n+3), .albums-grid .album:nth-child(4n+3) {
+  @apply bg-greenish bg-opacity-10 hover:bg-opacity-30;
+}
+
+.album {
+  @apply p-2 mx-1 mb-2 bg-opacity-10 rounded-md cursor-pointer w-40 flex-shrink-0;
+}
+
+.album--content {
+  @apply flex flex-col relative;
+}
+
+.album--controls-container {
+  @apply absolute w-full h-full flex justify-center;
+}
+
+.album--controls {
+  @apply invisible w-full flex justify-center;
+}
+
+.album--play {
+  @apply self-center transition-opacity opacity-75 text-secondary hover:opacity-100;
+}
+
+.album--play > svg {
+  @apply w-16 h-16;
+}
+
+.album--cover {
+  @apply h-32 mb-1 relative;
+}
+
+.album--cover:hover .album--controls {
+  @apply visible;
+}
+
+.album--image {
+  @apply  h-full w-full bg-gray-200;
+}
+
+.album--image > img {
+  @apply w-full h-full object-cover;
+}
+
+.album--title {
+  @apply text-small text-ellipsis whitespace-nowrap overflow-hidden hover:text-secondary transition-colors;
+}
+
+.album--author {
+  @apply text-gray-600 text-xsmall text-ellipsis whitespace-nowrap overflow-hidden hover:text-secondary transition-colors;
+}
+
+.album-placeholder {
+  @apply cursor-default border-none animate-pulse;
+}
+
+.album-placeholder--image {
+  @apply bg-gray-300 w-40 h-40;
+}
+
+.album-placeholder--title {
+  @apply bg-gray-300 w-32 h-5 mt-1;
+}
+
+.album-placeholder--author {
+  @apply bg-gray-300 mt-1 h-4 w-24;
+}

@@ -1,7 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<h2 class="mt-4 text-header-2">New Arrivals</h2>
 
-<p>Signed in as <%= current_user&.username || 'anonymous user' %></p>
+<div class="albums-grid">
+  <%= render @new_albums %>
+</div>
 
-<br>
+<% if current_user %>
+  <h2 class="mt-4 text-header-2">Recently Played</h2>
+  <div class="albums-row">
+    <%= render @recent_albums %>
+  </div>
+<% end %>
 
-<%= button_to "Log out", sign_out_path, method: :delete %>
+<h2 class="mt-4 text-header-2">Popular</h2>
+<div class="albums-row">
+  <%= render @popular_albums %>
+</div>

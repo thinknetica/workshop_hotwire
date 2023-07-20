@@ -8,14 +8,17 @@ class SessionsTest < ApplicationSystemTestCase
   test "visiting home" do
     sign_in_as @user
 
-    assert_text "Signed in as penny42"
+    within "nav" do
+      assert_text "@penny42"
+    end
   end
 
   test "signing in" do
     visit sign_in_url
-    fill_in "Username", with: "penny42"
-    fill_in "Password", with: "Secret1*3*5*"
-    click_on "Sign in"
+    fill_in "username", with: "penny42"
+    fill_in "password", with: "Secret1*3*5*"
+
+    click_on "Log in"
 
     assert_text "Signed in successfully"
   end
@@ -23,7 +26,12 @@ class SessionsTest < ApplicationSystemTestCase
   test "signing out" do
     sign_in_as @user
 
-    click_on "Log out"
-    assert_text "Signed in as anonymous"
+    within "nav" do
+      click_on "Sign out"
+    end
+
+    within "nav" do
+      assert_link "Log in"
+    end
   end
 end

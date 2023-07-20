@@ -1,29 +1,19 @@
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
-
-<h1>Sign in</h1>
-
-<%= form_with(url: sign_in_path) do |form| %>
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username, value: params[:username_hint], required: true, autofocus: true, autocomplete: "username" %>
+<div class="main bg-primary">
+  <div class="login-form mt-20">
+    <div class="login-form--back">
+    </div>
+    <div class="login-form--content">
+      <div class="login-form--logo">
+      </div>
+      <h2 class="text-header-2 text-center">Welcome back!</h2>
+      <%= form_with(url: sign_in_path) do |f| %>
+        <%= f.text_field :username, value: params[:username_hint], require: true, autofocus: true, autocomplete: "username", class: "input mt-2", placeholder: "Username" %>
+        <%= f.password_field :password, required: true, autocomplete: "current-password", class: "input mt-2", placeholder: "*****" %>
+        <div class="flex flex-row justify-between items-baseline">
+          <%= f.submit "Log in", class: "button button-primary mt-2" %>
+          <%= link_to "Sign up", sign_up_path, class: "text-small opacity-50 hover:opacity-100" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "current-password" %>
-  </div>
-
-  <div>
-    <%= form.submit "Sign in" %>
-  </div>
-<% end %>
-
-<br>
-
-
-<br>
-
-<div>
-  <%= link_to "Sign up", sign_up_path %> |
 </div>

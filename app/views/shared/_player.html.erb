@@ -1,0 +1,31 @@
+<%# locals: (track:) -%>
+<div class="player" id="player">
+  <div class="player--timeline">
+    <div class="player--timeline-progress" style="width:11%;"></div>
+  </div>
+  <div class="player--controls">
+    <span class="player-btn">
+      <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+</svg>
+    </span>
+  </div>
+  <div class="player--track">
+    <% if track.album.cover.attached? %>
+      <div class="player--cover">
+        <%= image_tag track.album.cover %>
+      </div>
+    <% end %>
+    <div class="player--info">
+      <span class="player--title">
+        <%= track.title %>
+      </span>
+      <%= link_to track.album.artist.name, artist_path(track.album.artist), class: "player--author" %>
+    </div>
+  </div>
+  <div class="player--timestamps">
+    <span class="player--current-time">00:00</span>
+    <span>&nbsp; / &nbsp;</span>
+    <span><%= seconds_to_duration(track.duration) %></span>
+  </div>
+</div>

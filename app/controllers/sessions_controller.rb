@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout "core"
+
   before_action :authenticate, only: %i[destroy]
 
   def new

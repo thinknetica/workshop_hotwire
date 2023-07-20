@@ -1,0 +1,70 @@
+.player {
+  @apply bg-white border-t border-primary w-full flex items-center sticky bottom-0 px-4 h-[70px];
+}
+
+.player--cover {
+  height: 60px;
+  width: 60px;
+  margin: 5px 0;
+}
+
+.player--controls {
+  @apply flex items-center flex-shrink-0;
+}
+
+.player-btn {
+  @apply cursor-pointer;
+}
+
+.player-btn svg {
+  @apply w-10 h-10 fill-current text-primary transition-colors hover:text-secondary;
+}
+
+.player--cover {
+  @apply  flex-shrink-0;
+}
+
+.player--cover img {
+  height: 100%;
+}
+
+.player--track {
+  @apply flex items-center invisible ml-4 flex-grow;
+}
+
+.player--info {
+  @apply flex flex-col justify-items-center ml-2;
+}
+
+.player--title {
+  @apply text-black text-small w-full;
+}
+
+.player--author {
+  @apply text-xsmall text-secondary whitespace-nowrap transition-colors hover:text-primary;
+}
+
+@screen sm {
+  .player--track {
+    @apply visible;
+  }
+}
+
+.player--timestamps {
+  @apply flex flex-shrink-0 justify-end text-small text-primary;
+}
+
+.player--current-time {
+  @apply text-secondary;
+}
+
+.player--timeline {
+  height: 6px;
+  top: -6px;
+
+  @apply absolute left-0 right-0 w-full bg-primary z-20 cursor-pointer;
+}
+
+.player--timeline-progress {
+  @apply bg-secondary h-full absolute left-0;
+}

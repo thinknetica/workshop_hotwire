@@ -1,0 +1,50 @@
+<div class="artist-header">
+  <div class="artist-image">
+    <% if artist.cover.attached? %>
+      <%= image_tag artist.cover %>
+    <% end %>
+  </div>
+  <div class="artist-info">
+    <div class="flex items-center">
+      <h1 class="text-header-2"><%= artist.name %></h1>
+    </div>
+    <div>
+      <% artist.tags.each do |tag| %>
+        <span class="meta"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<h2 class="mt-4 text-header-2">Popular</h2>
+<ul class="tracks mt-2">
+  <%= render tracks, enqueueble: true %>
+  <li class="track">
+    <span class="track--number"></span>
+    <a href="#" class="text-secondary hover:text-primary transition-colors">Load more</a>
+  </li>
+</ul>
+
+<hr class="my-4"/>
+<h2 class="mt-4 text-header-2">Discography</h2>
+  <ul class="tabs mt-4">
+  <li class="tab <%= "tab-active" if params[:album_type].blank? %>">
+    <%= link_to "Albums", artist_path(album_type: "") %>
+  </li>
+  <li class="tab <%= "tab-active" if params[:album_type] == "ep" %>">
+    <%= link_to "EPs", artist_path(album_type: "ep") %>
+  </li>
+  <li class="tab <%= "tab-active" if params[:album_type] == "live" %>">
+    <%= link_to "Live", artist_path(album_type: "live") %>
+  </li>
+  <li class="tab <%= "tab-active" if params[:album_type] == "compilation" %>">
+    <%= link_to "Compilations", artist_path(album_type: "compilation") %>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="albums-row">
+    <%= render albums %>
+  </div>
+</div>

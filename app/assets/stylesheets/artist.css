@@ -1,0 +1,19 @@
+.artist-header {
+  @apply py-4 flex justify-items-start;
+}
+
+.artist-info {
+  @apply flex flex-col justify-center;
+}
+
+.artist-image {
+  @apply w-32 bg-gray-200 object-fill rounded-full overflow-hidden mr-4;
+}
+
+.album-image {
+  @apply w-32 bg-gray-200 object-fill overflow-hidden mr-4;
+}
+
+.artist-meta {
+  @apply mt-2;
+}

@@ -1,0 +1,18 @@
+.login-form {
+  @apply bg-white w-[300px] mx-auto rounded relative;
+}
+
+.login-form--content {
+  @apply p-4 bg-white relative border-secondary border flex flex-col justify-items-center;
+}
+
+.login-form--back {
+  @apply absolute inset-0 bg-secondary transform rotate-6;
+}
+
+.login-form--logo {
+  @apply mt-4 h-[100px] my-4 w-full;
+  background: var(--logo-background);
+  background-size: contain;
+  background-position: center;
+}

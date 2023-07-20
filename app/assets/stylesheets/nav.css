@@ -11,6 +11,23 @@
   @apply mx-4 flex flex-row items-center;
 }
 
+.nav--search {
+  @apply relative;
+}
+
+.nav--search--icon {
+  @apply absolute z-[2] inset-y-4 left-0 flex items-center pl-2 pointer-events-none text-black;
+}
+
+.nav--search--icon:has(+ .nav--search--input:focus) {
+  @apply text-secondary;
+}
+
+
+.nav--search--input {
+  @apply pl-10 p-1 w-full rounded border-none bg-opacity-0 bg-white transition-colors focus:bg-opacity-90 focus:border focus:border-gray-300 focus:outline-none outline-offset-0 !important;
+}
+
 .nav--logo {
   @apply flex h-full items-center self-start;
   background: var(--logo-background);
@@ -27,7 +44,7 @@
 }
 
 .nav--menu {
-  @apply text-plain font-extralight mx-4 hover:underline hover:decoration-wavy hover:decoration-secondary;
+  @apply text-plain font-extralight mx-4 hover:underline hover:decoration-wavy hover:decoration-secondary whitespace-nowrap;
 }
 
 .nav--btn {

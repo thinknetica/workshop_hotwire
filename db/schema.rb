@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_07_20_012815) do
+ActiveRecord::Schema[7.1].define(version: 2023_07_20_020936) do
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
     t.integer "year", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_20_012815) do
     t.integer "listenings_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "tags"
     t.index ["name"], name: "index_artists_on_name", unique: true
   end
 

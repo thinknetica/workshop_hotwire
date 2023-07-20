@@ -1,0 +1,103 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+smells_like:
+  album: nevermind
+  title: Smells Like Teen Spirit
+  position: 1
+  duration: 300 # seconds
+
+come_as_you_are:
+  album: nevermind
+  title: Come as You Are
+  position: 2
+  duration: 219
+
+lithium:
+  album: nevermind
+  title: Lithium
+  position: 3
+  duration: 257
+
+smells_like_teen_spirit_live:
+  album: muddy_banks
+  title: Smells Like Teen Spirit (Live)
+  position: 1
+  duration: 296
+
+about_a_girl:
+  album: muddy_banks
+  title: About a Girl
+  position: 2
+  duration: 167
+
+sliver:
+  album: sliver
+  title: Sliver
+  position: 1
+  duration: 124
+
+frantic:
+  album: st_anger
+  title: Frantic
+  position: 1
+  duration: 345
+
+st_anger:
+  album: st_anger
+  title: St. Anger
+  position: 2
+  duration: 431
+
+free_as_a_bird:
+  album: free_as_a_bird
+  title: Free as a Bird
+  position: 1
+  duration: 213
+
+real_love:
+  album: free_as_a_bird
+  title: Real Love
+  position: 2
+  duration: 181
+
+taxman:
+  album: revolver
+  title: Taxman
+  position: 1
+  duration: 148
+
+eleanor_rigby:
+  album: revolver
+  title: Eleanor Rigby
+  position: 2
+  duration: 126
+
+yellow_submarine:
+  album: yellow_submarine
+  title: Yellow Submarine
+  position: 1
+  duration: 159
+
+only_a_northern_song:
+  album: yellow_submarine
+  title: Only a Northern Song
+  position: 2
+  duration: 196
+
+not_guilty:
+  album: anthology_1
+  title: Not Guilty
+  position: 1
+  duration: 259
+
+we_were_four_guys:
+  album: anthology_1
+  title: We Were Four Guys... That's All
+  position: 2
+  duration: 238
+
+thatll_be_the_day:
+  album: anthology_1
+  title: That'll Be the Day
+  position: 3
+  duration: 142

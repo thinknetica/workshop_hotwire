@@ -1,0 +1,53 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+nevermind:
+  artist: nirvana
+  title: Nevermind
+  year: 1991
+  tracks_count: 3
+
+sliver:
+  artist: nirvana
+  title: Sliver
+  year: 1990
+  kind: ep
+  tracks_count: 1
+
+muddy_banks:
+  artist: nirvana
+  title: From the Muddy Banks of the Whishkah
+  year: 1997
+  kind: live
+  tracks_count: 2
+
+st_anger:
+  artist: metallica
+  title: "St. Anger"
+  year: 2003
+  tracks_count: 2
+
+revolver:
+  artist: beatles
+  title: Revolver
+  year: 1966
+  tracks_count: 2
+
+yellow_submarine:
+  artist: beatles
+  title: Yellow Submarine
+  year: 1969
+  tracks_count: 2
+
+anthology_1:
+  artist: beatles
+  title: Anthology 1
+  year: 1995
+  kind: compilation
+  tracks_count: 3
+
+free_as_a_bird:
+  artist: beatles
+  title: Free as a Bird
+  year: 1995
+  kind: ep
+  tracks_count: 2

@@ -8,4 +8,6 @@ class Album < ApplicationRecord
   enum :kind, {lp: "lp", ep: "ep", live: "live", compilation: "compilation"}
 
   validates :title, presence: true
+
+  normalizes :title, with: -> { _1.squish }
 end

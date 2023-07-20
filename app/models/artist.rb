@@ -6,6 +6,8 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  normalizes :name, with: -> { _1.squish }
+
   scope :tagged, ->(tag) {
     where("EXISTS (SELECT 1 FROM json_each(artists.tags) WHERE value = ?)", tag)
   }

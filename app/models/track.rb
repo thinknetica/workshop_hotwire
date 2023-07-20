@@ -4,6 +4,8 @@ class Track < ApplicationRecord
 
   validates :title, length: {maximum: 255}
 
+  normalizes :title, with: -> { _1.squish }
+
   after_create do
     Artist.increment_counter(:tracks_count, album.artist_id) # rubocop:disable Rails/SkipsModelValidations
   end

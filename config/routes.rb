@@ -11,8 +11,15 @@ Rails.application.routes.draw do
   end
 
   resource :live_station, only: [:show, :update, :edit, :new, :create] do
-    resources :tracks, only: [:create, :destroy], module: :live_station
+    patch :play, on: :member
+    patch :stop, on: :member
+
+    resources :tracks, only: [:create, :destroy], module: :live_station do
+      post :play, on: :member
+    end
   end
+
+  get "search", to: "search#index", as: :search
 
   root "home#index"
 end

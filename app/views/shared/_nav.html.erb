@@ -14,6 +14,9 @@
         <% end %>
       <% end %>
     <%- end -%>
+    <%= form_with(url: search_path, method: :get, class: "nav--search") do |f| %>
+      <%= f.search_field :q, value: params[:q], class: "input", placeholder: "Search library..." %>
+    <% end %>
   </div>
   <div class="nav--right">
     <%- if current_user -%>

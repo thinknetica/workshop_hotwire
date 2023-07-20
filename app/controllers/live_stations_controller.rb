@@ -28,6 +28,25 @@ class LiveStationsController < ApplicationController
     @station = current_user.live_station
   end
 
+  def play
+    station = current_user.live_station
+
+    session[:track_id] = station.current_track.id
+
+    station.update!(live: true)
+
+    redirect_to station
+  end
+
+  def stop
+    station = current_user.live_station
+
+    session.delete(:track_id)
+    station.update!(live: false)
+
+    redirect_to station
+  end
+
   def update
     @station = current_user.live_station
     @station.update!(station_params)
@@ -37,6 +56,6 @@ class LiveStationsController < ApplicationController
   private
 
   def station_params
-    params.require(:live_station).permit(:name, :live, :cover)
+    params.require(:live_station).permit(:name, :cover)
   end
 end

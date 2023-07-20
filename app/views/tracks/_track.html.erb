@@ -1,23 +1,28 @@
-<%# locals: (track:, track_counter: nil, track_iteration: nil, deletable: false, playable: true, enqueueble: false) -%>
+<%# locals: (track:, track_counter: nil, track_iteration: nil, deletable: false, enqueueble: false) -%>
 <li class="track">
   <span class="track--number">
-    <% if track == current_track %>
+    <% if track.id == current_track&.id %>
       <span class="track--number--text track--playing-indicator"></span>
     <% else %>
       <%= track_counter + 1 %>
     <% end %>
   </span>
-  <% if enqueueble && current_user&.live_station&.live? %>
-    <%= button_to live_station_tracks_path(track_id: track.id), method: :post, form_class: "track--title" do %>
-      <span><%= track.title %></span>
+  <% if current_user&.live_station&.live? %>
+    <%= button_to play_live_station_track_path(track), method: :post, form_class: "track--title" do %>
+      <%= track.title %>
     <% end %>
-  <% elsif playable %>
-    <%= link_to track.title, params.to_unsafe_h.merge(track_id: track.id), class: "track--title" %>
   <% else %>
-    <span class="track--title"><%= track.title %></span>
+    <%= link_to track.title, params.to_unsafe_h.merge(track_id: track.id), class: "track--title" %>
   <% end %>
   <% if current_user %>
     <span class="track--actions">
+      <% if enqueueble %>
+        <%= button_to live_station_tracks_path(track_id: track.id), method: :post, class: "track--action" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        <% end %>
+      <% end %>
       <% if deletable %>
         <%= button_to live_station_track_path(track), method: :delete, class: "track--action" do %>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

@@ -10,4 +10,8 @@ class Album < ApplicationRecord
   validates :title, presence: true
 
   normalizes :title, with: -> { _1.squish }
+
+  scope :search, ->(q) {
+    where(arel_table[:title].lower.matches("%#{q.downcase}%"))
+  }
 end

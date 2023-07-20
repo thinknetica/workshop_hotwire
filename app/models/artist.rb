@@ -11,4 +11,7 @@ class Artist < ApplicationRecord
   scope :tagged, ->(tag) {
     where("EXISTS (SELECT 1 FROM json_each(artists.tags) WHERE value = ?)", tag)
   }
+  scope :search, ->(q) {
+    where(arel_table[:name].lower.matches("%#{q.downcase}%"))
+  }
 end

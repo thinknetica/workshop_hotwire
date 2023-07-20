@@ -17,13 +17,11 @@
     </div>
     <div class="mt-2">
       <% if @station.live? %>
-        <%= form_for @station do |f| %>
-          <%= f.hidden_field :live, value: false %>
+        <%= form_with(url: stop_live_station_path(@station), method: :patch) do |f| %>
           <%= f.submit "Stop streaming", class: "button button-secondary" %>
         <% end %>
       <% else %>
-        <%= form_for @station do |f| %>
-          <%= f.hidden_field :live, value: true %>
+        <%= form_with(url: play_live_station_path(@station), method: :patch) do |f| %>
           <%= f.submit "Go live!", class: "button button-primary" %>
         <% end %>
       <% end%>
@@ -36,5 +34,5 @@
 <h2 class="mt-4 text-header-2">Queue</h2>
 
 <ul class="tracks mt-2">
-  <%= render @station.tracks, deletable: true, playable: false, enqueueble: false %>
+  <%= render @station.tracks, deletable: true, enqueueble: false %>
 </ul>

@@ -11,12 +11,10 @@
     <% end %>
   </aside>
 
-  <%- if current_track %>
-    <%= render partial: "shared/player", locals: {track: current_track} %>
-  <%- end -%>
-
   <%- if current_station %>
     <%= render partial: "shared/player", locals: {station: current_station, track: current_station.current_track} %>
+  <%- elsif current_track -%>
+    <%= render partial: "shared/player", locals: {track: current_track} %>
   <%- end %>
 <%- end -%>
 

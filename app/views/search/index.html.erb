@@ -1,0 +1,28 @@
+<h1 class="mt-4 text-header-2">Search results for: <%= params[:q] %></h1>
+
+<h2 class="mt-4 text-header-3">Artists</h2>
+<% if @artists.any? %>
+  <div class="albums-row">
+    <%= render @artists %>
+  </div>
+<% else %>
+  <span class="text-small text-gray-600">None</span>
+<% end %>
+
+<h2 class="mt-4 text-header-3">Albums</h2>
+<% if @albums.any? %>
+  <div class="albums-grid">
+    <%= render @albums %>
+  </div>
+<% else %>
+  <span class="text-small text-gray-600">None</span>
+<% end %>
+
+<h2 class="mt-4 text-header-3">Tracks</h2>
+<% if @tracks.any? %>
+  <ul class="tracks mt-2">
+    <%= render @tracks, enqueueble: true %>
+  </ul>
+<% else %>
+  <span class="text-small text-gray-600">None</span>
+<% end %>

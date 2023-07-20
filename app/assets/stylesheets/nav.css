@@ -4,7 +4,7 @@
 }
 
 .nav--left {
-  @apply ml-4 flex flex-grow-0;
+  @apply ml-4 flex flex-grow-0 items-center;
 }
 
 .nav--right {

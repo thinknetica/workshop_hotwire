@@ -1,0 +1,13 @@
+<%# locals: (artist:, artist_counter: nil, artist_iteration: nil) -%>
+<div class="album">
+  <div class="album--content">
+    <%= link_to artist_path(artist), class: "album--cover" do %>
+      <div class="album--image">
+        <% if artist.cover.attached? %>
+          <%= image_tag artist.cover %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to artist.name, artist_path(artist), class: "album--title" %>
+  </div>
+</div>

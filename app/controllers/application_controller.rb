@@ -19,18 +19,29 @@ class ApplicationController < ActionController::Base
   def current_track
     return @current_track if instance_variable_defined?(:@current_track)
 
-    @current_track = params[:track_id].present? ? Track.find_by(id: params[:track_id]) : nil
+    track_id = params[:track_id] || session[:track_id]
+    @current_track = track_id.present? ? Track.find_by(id: track_id) : nil
+    session[:track_id] = @current_track&.id
+    @current_track
   end
 
   def current_album
     return @current_album if instance_variable_defined?(:@current_album)
 
-    @current_album = params[:album_id].present? ? Album.find_by(id: params[:album_id]) : nil
+    album_id = params[:album_id] || session[:album_id]
+    @current_album = album_id.present? ? Album.find_by(id: album_id) : nil
+
+    session[:album_id] = @current_album&.id
+    @current_album
   end
 
   def current_station
     return @current_station if instance_variable_defined?(:@current_station)
 
-    @current_station = params[:station_id].present? ? LiveStation.find_by(id: params[:station_id]) : nil
+    station_id = params[:station_id] || session[:station_id]
+
+    @current_station = station_id.present? ? LiveStation.find_by(id: station_id) : nil
+    session[:station_id] = @current_station&.id
+    @current_station
   end
 end

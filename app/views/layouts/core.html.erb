@@ -12,7 +12,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-screen relative">
+  <body class="min-h-screen relative">
     <%= render "layouts/flash" %>
     <%= content_for?(:content) ? yield(:content) : yield %>
   </body>

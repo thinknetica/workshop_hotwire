@@ -23,10 +23,11 @@
 
 .main {
   @apply h-full p-4 overflow-x-hidden text-plain w-2/3;
+  min-height: calc(100vh - 140px);
 }
 
 .aside {
-  @apply border-l border-secondary border-opacity-50 w-1/3 top-0 fixed right-0 bottom-0 mt-[70px] text-plain;
+  @apply border-l border-secondary border-opacity-50 w-1/3 top-0 fixed right-0 bottom-0 mt-[70px] text-plain overflow-y-auto;
 }
 
 .album-info {

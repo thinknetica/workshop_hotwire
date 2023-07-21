@@ -2,13 +2,13 @@
 <div class="fixed z-50 right-0 mr-4 top-0 mt-[80px]" id="flash">
   <div class="flex justify-center">
     <% if flash[:notice] %>
-      <div class="max-w-sm bg-white opacity-95 border-t-4 border-greenish rounded-b text-black px-4 py-3 shadow-md" role="alert">
+      <div class="max-w-sm bg-white opacity-95 border-t-4 border-greenish rounded-b text-black px-4 py-3 shadow-md" role="alert" data-turbo-temporary>
         <p class="text-small"><%= flash[:notice] %></p>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
-      <div class="max-w-sm bg-white opacity-95 border-t-4 border-red-800 text-red-800 rounded-b px-4 py-3 shadow-md" role="alert">
+      <div class="max-w-sm bg-white opacity-95 border-t-4 border-red-800 text-red-800 rounded-b px-4 py-3 shadow-md" role="alert" data-turbo-temporary>
         <p class="text-small"><%= flash[:alert] %></p>
       </div>
     <% end %>

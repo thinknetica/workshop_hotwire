@@ -47,5 +47,19 @@
       <span>&nbsp; / &nbsp;</span>
       <span><%= seconds_to_duration(track.duration) %></span>
     </div>
+    <script>
+      (() => {
+        let currentTime = 0;
+        const el = document.querySelector(".player--current-time");
+        setInterval(() => {
+          currentTime += 1;
+          let mins = Math.floor(currentTime / 60);
+          let secs = currentTime % 60;
+          if (mins < 10) mins = "0" + mins;
+          if (secs < 10) secs = "0" + secs;
+          el.innerHTML = `${mins}:${secs}`;
+        }, 1000)
+      })();
+    </script>
   <% end %>
 </div>

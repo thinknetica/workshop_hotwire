@@ -11,4 +11,12 @@ document.addEventListener("turbo:before-render", (event) => {
     await new Promise((resolve) => setTimeout(() => resolve(), 0));
     morphdom(prevEl, newEl);
   };
+
+  if (document.startViewTransition) {
+    event.preventDefault();
+
+    document.startViewTransition(() => {
+      event.detail.resume();
+    });
+  }
 });

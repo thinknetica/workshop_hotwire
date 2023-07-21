@@ -1,5 +1,5 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="player">
+<div class="player" id="<%= dom_id(*[track, station, :player].compact) %>" data-turbo-permanent>
   <% if track %>
     <div class="player--timeline">
       <div class="player--timeline-progress" style="width:11%;"></div>

@@ -1,3 +1,17 @@
+@keyframes player-emulation {
+  0% {
+    width: 0%;
+  }
+
+  50% {
+    width: 33%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
 .player {
   @apply bg-white border-t border-primary w-full flex items-center sticky bottom-0 px-4 h-[70px];
 }
@@ -67,6 +81,7 @@
 
 .player--timeline-progress {
   @apply bg-secondary h-full absolute left-0;
+  animation: player-emulation 180s linear;
 }
 
 .player--radio {

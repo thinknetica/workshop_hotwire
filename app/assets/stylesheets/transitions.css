@@ -1,0 +1,53 @@
+.aside {
+  view-transition-name: aside;
+}
+
+/* Use named view transitions for nav and player to put them onto separate pseudo-trees upper than aside and main */
+.nav {
+  view-transition-name: nav;
+}
+
+.player {
+  view-transition-name: player;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes full-slide-to-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes full-slide-from-right {
+  from { transform: translateX(100%); }
+}
+
+::view-transition-old(aside) {
+  animation: 300ms ease-out 0ms both full-slide-to-right, 250ms ease-out 50ms both fade-out;
+}
+
+::view-transition-new(aside) {
+  animation: 250ms ease-in 50ms both full-slide-from-right, 200ms ease-in 0ms both fade-in;
+}
+
+::view-transition-old(aside) {
+  animation: 300ms ease-out 0ms both full-slide-to-right, 250ms ease-out 50ms both fade-out;
+}
+
+::view-transition-new(aside) {
+  animation: 250ms ease-in 50ms both full-slide-from-right, 200ms ease-in 0ms both fade-in;
+}
+
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

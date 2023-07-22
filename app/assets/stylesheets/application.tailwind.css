@@ -6,6 +6,7 @@
 @import "./album.css";
 @import "./player.css";
 @import "./login.css";
+@import "./transitions.css";
 
 @tailwind base;
 @tailwind components;

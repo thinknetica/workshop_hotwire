@@ -28,23 +28,5 @@
 </ul>
 
 <hr class="my-4"/>
-<h2 class="mt-4 text-header-2">Discography</h2>
-  <ul class="tabs mt-4">
-  <li class="tab <%= "tab-active" if params[:album_type].blank? %>">
-    <%= link_to "Albums", artist_path(album_type: "") %>
-  </li>
-  <li class="tab <%= "tab-active" if params[:album_type] == "ep" %>">
-    <%= link_to "EPs", artist_path(album_type: "ep") %>
-  </li>
-  <li class="tab <%= "tab-active" if params[:album_type] == "live" %>">
-    <%= link_to "Live", artist_path(album_type: "live") %>
-  </li>
-  <li class="tab <%= "tab-active" if params[:album_type] == "compilation" %>">
-    <%= link_to "Compilations", artist_path(album_type: "compilation") %>
-  </li>
-</ul>
-<div class="tab-content">
-  <div class="albums-row">
-    <%= render albums %>
-  </div>
-</div>
+
+<%= render partial: "discography", locals: {artist:, albums:} %>

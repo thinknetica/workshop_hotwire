@@ -1,0 +1,25 @@
+<%# locals: (artist:, albums:, type: params[:album_type]) -%>
+<%= turbo_frame_tag dom_id(artist, :discography), target: "_top" do %>
+  <div>
+    <h2 class="mt-4 text-header-2">Discography</h2>
+    <ul class="tabs mt-4">
+      <li class="tab <%= "tab-active" if type.blank? %>">
+        <%= link_to "Albums", artist_path, data: {"turbo-frame" => "_self", "turbo-action" => "advance"} %>
+      </li>
+      <li class="tab <%= "tab-active" if type == "ep" %>">
+        <%= link_to "EPs", artist_path(album_type: "ep"), data: {"turbo-frame" => "_self", "turbo-action" => "advance"} %>
+      </li>
+      <li class="tab <%= "tab-active" if type == "live" %>">
+        <%= link_to "Live", artist_path(album_type: "live"), data: {"turbo-frame" => "_self", "turbo-action" => "advance"} %>
+      </li>
+      <li class="tab <%= "tab-active" if type == "compilation" %>">
+        <%= link_to "Compilations", artist_path(album_type: "compilation"), data: {"turbo-frame" => "_self", "turbo-action" => "advance"} %>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="albums-row">
+        <%= render albums %>
+      </div>
+    </div>
+  </div>
+<% end %>

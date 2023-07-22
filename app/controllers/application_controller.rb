@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_track
-  helper_method :current_album
   helper_method :current_station
 
   private
@@ -23,16 +22,6 @@ class ApplicationController < ActionController::Base
     @current_track = track_id.present? ? Track.find_by(id: track_id) : nil
     session[:track_id] = @current_track&.id
     @current_track
-  end
-
-  def current_album
-    return @current_album if instance_variable_defined?(:@current_album)
-
-    album_id = params[:album_id] || session[:album_id]
-    @current_album = album_id.present? ? Album.find_by(id: album_id) : nil
-
-    session[:album_id] = @current_album&.id
-    @current_album
   end
 
   def current_station

@@ -4,7 +4,11 @@ class ArtistsController < ApplicationController
     albums = selected_albums(artist.albums, params[:album_type]).with_attached_cover.preload(:artist)
     tracks = artist.tracks.popularity_ordered.limit(5)
 
-    render action: :show, locals: {artist:, albums:, tracks:}
+    if turbo_frame_request?
+      render partial: "discography", locals: {artist:, albums:}
+    else
+      render action: :show, locals: {artist:, albums:, tracks:}
+    end
   end
 
   private

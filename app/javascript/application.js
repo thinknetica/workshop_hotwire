@@ -23,14 +23,32 @@ document.addEventListener("turbo:before-render", (event) => {
 
 document.addEventListener("turbo:before-frame-render", (event) => {
   event.detail.render = (currentElement, newElement) => {
-    morphdom(currentElement, newElement, { childrenOnly: true });
+    if (
+      currentElement.hasAttribute("transition-name") &&
+      newElement.hasAttribute("transition-name") &&
+      currentElement.firstElementChild?.getAttribute("transition-id") !==
+        newElement.firstElementChild?.getAttribute("transition-id")
+    ) {
+      document.documentElement.setAttribute(
+        "transition",
+        currentElement.getAttribute("transition-name")
+      );
+    }
+
+    morphdom(currentElement, newElement, {
+      childrenOnly: true,
+    });
   };
 
   if (document.startViewTransition) {
     event.preventDefault();
 
-    document.startViewTransition(() => {
-      event.detail.resume();
-    });
+    document
+      .startViewTransition(() => {
+        event.detail.resume();
+      })
+      .finished.then(() => {
+        document.documentElement.removeAttribute("transition");
+      });
   }
 });

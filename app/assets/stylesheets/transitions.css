@@ -28,20 +28,12 @@
   from { transform: translateX(100%); }
 }
 
-::view-transition-old(aside) {
-  animation: 300ms ease-out 0ms both full-slide-to-right, 250ms ease-out 50ms both fade-out;
+html[transition="aside"]::view-transition-old(aside) {
+  animation: 500ms ease-in 0ms both full-slide-to-right, 500ms ease-out 50ms both fade-out;
 }
 
-::view-transition-new(aside) {
-  animation: 250ms ease-in 50ms both full-slide-from-right, 200ms ease-in 0ms both fade-in;
-}
-
-::view-transition-old(aside) {
-  animation: 300ms ease-out 0ms both full-slide-to-right, 250ms ease-out 50ms both fade-out;
-}
-
-::view-transition-new(aside) {
-  animation: 250ms ease-in 50ms both full-slide-from-right, 200ms ease-in 0ms both fade-in;
+html[transition="aside"]::view-transition-new(aside) {
+  animation: 300ms ease-out 100ms both full-slide-from-right, 300ms ease-in 0ms both fade-in;
 }
 
 @media (prefers-reduced-motion) {

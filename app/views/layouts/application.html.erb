@@ -5,11 +5,7 @@
     <%= yield %>
   </div>
 
-  <aside id="aside" class="aside">
-    <%- if current_album %>
-      <%= render partial: "albums/aside", locals: {album: current_album} %>
-    <% end %>
-  </aside>
+  <%= render partial: "albums/aside" %>
 
   <%- if current_station %>
     <%= render partial: "shared/player", locals: {station: current_station, track: current_station.current_track} %>

@@ -25,6 +25,8 @@ module PencilMc
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.x.debug_html = ENV["DEBUG_HTML"].in?(%w[1 true yes])
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

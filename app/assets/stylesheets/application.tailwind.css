@@ -69,3 +69,16 @@
 .input {
   @apply p-1 w-full rounded border border-gray-300 focus:outline-none;
 }
+
+html.debug * {
+  animation: highlight 0.2s ease;
+}
+
+@keyframes highlight {
+  0% {
+    outline: 1px solid red;
+  }
+  100% {
+    outline: 0px solid red;
+  }
+}

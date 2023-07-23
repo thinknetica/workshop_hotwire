@@ -30,7 +30,7 @@
 
 .nav--logo {
   @apply flex h-full items-center self-start;
-  background: var(--logo-background);
+  background: url("/assets/logo.png") no-repeat;
   background-size: contain;
   padding: 30px 30px;
 }

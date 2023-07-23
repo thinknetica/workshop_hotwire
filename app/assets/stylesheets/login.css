@@ -12,7 +12,7 @@
 
 .login-form--logo {
   @apply mt-4 h-[100px] my-4 w-full;
-  background: var(--logo-background);
+  background: url("/assets/logo.png") no-repeat;
   background-size: contain;
   background-position: center;
 }

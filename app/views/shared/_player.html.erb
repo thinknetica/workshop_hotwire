@@ -1,14 +1,23 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-turbo-permanent>
+<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>"
+  data-turbo-permanent
+  data-controller="player"
+  data-player-duration-value="<%= track&.duration %>"
+  data-player-track-value="<%= track&.id %>"
+  data-player-playing-class="player-playing"
+>
   <% if track %>
     <div class="player--timeline">
-      <div class="player--timeline-progress" style="width:11%;"></div>
+      <div class="player--timeline-progress" style="width:0%;" data-player-target="progress"></div>
     </div>
   <% end %>
   <% unless station %>
   <div class="player--controls">
-    <span class="player-btn">
+    <span class="player-btn" data-action="click->player#play">
       <%= render "icons/play" %>
+    </span>
+    <span class="player-btn" data-action="click->player#pause">
+      <%= render "icons/pause" %>
     </span>
   </div>
   <% end %>
@@ -37,23 +46,9 @@
   </div>
   <% if track %>
     <div class="player--timestamps">
-      <span class="player--current-time">00:00</span>
+      <span class="player--current-time" data-player-target="time">00:00</span>
       <span>&nbsp; / &nbsp;</span>
       <span><%= seconds_to_duration(track.duration) %></span>
     </div>
-    <script>
-      (() => {
-        let currentTime = 0;
-        const el = document.querySelector(".player--current-time");
-        setInterval(() => {
-          currentTime += 1;
-          let mins = Math.floor(currentTime / 60);
-          let secs = currentTime % 60;
-          if (mins < 10) mins = "0" + mins;
-          if (secs < 10) secs = "0" + secs;
-          el.innerHTML = `${mins}:${secs}`;
-        }, 1000)
-      })();
-    </script>
   <% end %>
 </div>

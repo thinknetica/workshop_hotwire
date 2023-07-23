@@ -1,0 +1,13 @@
+@layer components {
+  .flash {
+    @apply max-w-sm bg-white opacity-95 border-t-4 border-slate-900 rounded-b text-black px-4 py-3 shadow-md;
+  }
+
+  .flash.notice {
+    @apply border-greenish;
+  }
+
+  .flash.alert {
+    @apply border-red-800 text-red-800;
+  }
+}

@@ -1,5 +1,5 @@
 development:
-  adapter: litecable
+  adapter: async
 
 test:
   adapter: test

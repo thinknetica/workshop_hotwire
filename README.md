@@ -2,6 +2,14 @@
 
 Demo applications for [Thinknetica][] workshop on [Rails and Hotwire][workshop].
 
+## Branches
+
+The `main` branch contains only the base code (before the workshop). For code corresponding to each day of the workshop, see the following branches:
+
+- [day-1](https://github.com/thinknetica/workshop_hotwire/tree/day-1)
+- day-2 (_coming soon_)
+- day-3 (_coming soon_)
+
 ## Requirements
 
 - Ruby 3.2.2

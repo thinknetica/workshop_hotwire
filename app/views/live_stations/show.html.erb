@@ -17,7 +17,7 @@
           <%= f.submit "Stop streaming", class: "button button-secondary" %>
         <% end %>
       <% else %>
-        <%= form_with(url: play_live_station_path(@station), method: :patch) do |f| %>
+        <%= form_with(url: start_live_station_path(@station), method: :patch) do |f| %>
           <%= f.submit "Go live!", class: "button button-primary" %>
         <% end %>
       <% end%>

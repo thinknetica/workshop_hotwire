@@ -28,10 +28,11 @@ class LiveStationsController < ApplicationController
     @station = current_user.live_station
   end
 
-  def play
+  def start
     station = current_user.live_station
 
-    session[:track_id] = station.current_track.id
+    session[:track_id] = station.current_track&.id
+    session[:station_id] = station.id
 
     station.update!(live: true)
 
@@ -42,6 +43,7 @@ class LiveStationsController < ApplicationController
     station = current_user.live_station
 
     session.delete(:track_id)
+    session.delete(:station_id)
     station.update!(live: false)
 
     redirect_to station

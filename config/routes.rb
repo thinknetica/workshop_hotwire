@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resource :live_station, only: [:show, :update, :edit, :new, :create] do
-    patch :play, on: :member
+    patch :start, on: :member
     patch :stop, on: :member
 
     resources :tracks, only: [:create, :destroy], module: :live_station do

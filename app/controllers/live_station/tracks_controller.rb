@@ -18,7 +18,7 @@ class LiveStation::TracksController < ApplicationController
 
     session[:track_id] = track.id
 
-    redirect_back fallback_location: root_path
+    render partial: "shared/player", locals: {track:}
   end
 
   def destroy

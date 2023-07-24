@@ -12,7 +12,7 @@
       <%= track.title %>
     <% end %>
   <% else %>
-    <%= link_to track.title, params.to_unsafe_h.merge(track_id: track.id), class: "track--title" %>
+    <%= link_to track.title, play_track_path(track), class: "track--title", data: {"turbo-frame" => "player"} %>
   <% end %>
   <% if current_user %>
     <span class="track--actions">

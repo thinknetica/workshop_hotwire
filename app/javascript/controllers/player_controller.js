@@ -12,7 +12,7 @@ function secondsToDuration(num) {
 // Connects to data-controller="player"
 export default class extends Controller {
   static targets = ["progress", "time"];
-  static values = { duration: Number, track: String };
+  static values = { duration: Number, track: String, nextTrackUrl: String };
   static classes = ["playing"];
 
   initialize() {
@@ -70,6 +70,10 @@ export default class extends Controller {
 
   handleEnded() {
     this.pause();
+
+    if (this.nextTrackUrlValue) {
+      Turbo.visit(this.nextTrackUrlValue, { frame: "player" });
+    }
   }
 
   handleTimeUpdate() {

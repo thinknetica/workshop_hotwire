@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tracks, only: [] do
+    get :play_next, on: :member
+    get :play, on: :member
+  end
+
   get "search", to: "search#index", as: :search
 
   root "home#index"

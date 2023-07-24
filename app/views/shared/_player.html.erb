@@ -1,54 +1,57 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>"
-  data-turbo-permanent
-  data-controller="player"
-  data-player-duration-value="<%= track&.duration %>"
-  data-player-track-value="<%= track&.id %>"
-  data-player-playing-class="player-playing"
->
-  <% if track %>
-    <div class="player--timeline">
-      <div class="player--timeline-progress" style="width:0%;" data-player-target="progress"></div>
-    </div>
-  <% end %>
-  <% unless station %>
-  <div class="player--controls">
-    <span class="player-btn" data-action="click->player#play">
-      <%= render "icons/play" %>
-    </span>
-    <span class="player-btn" data-action="click->player#pause">
-      <%= render "icons/pause" %>
-    </span>
-  </div>
-  <% end %>
-  <div class="player--track">
-    <% if station %>
-    <div class="player--radio">
-      <%= render "icons/radio" %>
-      <span class="player--author ml-2">
-        <%= station.name%>
+<%= turbo_frame_tag :player, target: "_top" do %>
+  <div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>"
+    data-turbo-permanent
+    data-controller="player"
+    data-player-duration-value="<%= track&.duration %>"
+    data-player-track-value="<%= track&.id %>"
+    data-player-playing-class="player-playing"
+    data-player-next-track-url-value="<%= play_next_track_path(track) if track %>"
+  >
+    <% if track %>
+      <div class="player--timeline" data-action="click->player#seek">
+        <div class="player--timeline-progress" style="width:0%;" data-player-target="progress"></div>
+      </div>
+    <% end %>
+    <% unless station %>
+    <div class="player--controls">
+      <span class="player-btn" data-action="click->player#play">
+        <%= render "icons/play" %>
+      </span>
+      <span class="player-btn" data-action="click->player#pause">
+        <%= render "icons/pause" %>
       </span>
     </div>
     <% end %>
-    <% if track %>
-      <% if track.album.cover.attached? %>
-      <div class="player--cover">
-        <%= image_tag track.album.cover %>
+    <div class="player--track">
+      <% if station %>
+      <div class="player--radio">
+        <%= render "icons/radio" %>
+        <span class="player--author ml-2">
+          <%= station.name%>
+        </span>
       </div>
       <% end %>
-      <div class="player--info">
-        <span class="player--title">
-          <%= track.title %>
-        </span>
-        <%= link_to track.album.artist.name, artist_path(track.album.artist), class: "player--author" %>
+      <% if track %>
+        <% if track.album.cover.attached? %>
+        <div class="player--cover">
+          <%= image_tag track.album.cover %>
+        </div>
+        <% end %>
+        <div class="player--info">
+          <span class="player--title">
+            <%= track.title %>
+          </span>
+          <%= link_to track.album.artist.name, artist_path(track.album.artist), class: "player--author" %>
+        </div>
+      <% end %>
+    </div>
+    <% if track %>
+      <div class="player--timestamps">
+        <span class="player--current-time" data-player-target="time">00:00</span>
+        <span>&nbsp; / &nbsp;</span>
+        <span><%= seconds_to_duration(track.duration) %></span>
       </div>
     <% end %>
   </div>
-  <% if track %>
-    <div class="player--timestamps">
-      <span class="player--current-time" data-player-target="time">00:00</span>
-      <span>&nbsp; / &nbsp;</span>
-      <span><%= seconds_to_duration(track.duration) %></span>
-    </div>
-  <% end %>
-</div>
+<% end %>

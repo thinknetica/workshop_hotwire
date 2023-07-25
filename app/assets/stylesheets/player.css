@@ -81,7 +81,7 @@
 
 .player--timeline-progress {
   @apply bg-secondary h-full absolute left-0;
-  animation: player-emulation 180s linear;
+  animation: player-emulation 180s linear !important;
 }
 
 .player--radio {

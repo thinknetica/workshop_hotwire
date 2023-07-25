@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LiveStation::TracksController < ApplicationController
   before_action :authenticate
 

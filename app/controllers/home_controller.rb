@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     base_scope = Album.includes(:artist).with_attached_cover

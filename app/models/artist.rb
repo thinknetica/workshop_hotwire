@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Artist < ApplicationRecord
   has_one_attached :cover
   has_many :albums, dependent: :destroy
@@ -9,7 +11,7 @@ class Artist < ApplicationRecord
   normalizes :name, with: -> { _1.squish }
 
   scope :tagged, ->(tag) {
-    where("EXISTS (SELECT 1 FROM json_each(artists.tags) WHERE value = ?)", tag)
+    where('EXISTS (SELECT 1 FROM json_each(artists.tags) WHERE value = ?)', tag)
   }
   scope :search, ->(q) {
     where(arel_table[:name].lower.matches("%#{q.downcase}%"))

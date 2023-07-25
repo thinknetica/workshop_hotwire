@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -7,9 +9,9 @@ class User < ApplicationRecord
   has_one :live_station, inverse_of: :user, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
-  validates :password, allow_nil: true, length: {minimum: 6}
+  validates :password, allow_nil: true, length: { minimum: 6 }
 
-  PREFIX = "@"
+  PREFIX = '@'
 
   def build_live_station(params = {})
     params[:name] ||= "#{User::PREFIX}#{username}'s Station"

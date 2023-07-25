@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LiveStationsController < ApplicationController
   before_action :authenticate
 

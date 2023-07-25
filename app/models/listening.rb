@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Listening < ApplicationRecord
   belongs_to :user
   belongs_to :track, counter_cache: true

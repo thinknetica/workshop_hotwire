@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get "sign_in", to: "sessions#new", as: :sign_in
-  post "sign_in", to: "sessions#create"
-  get "sign_up", to: "registrations#new", as: :sign_up
-  post "sign_up", to: "registrations#create"
-  delete "sign_out", to: "sessions#destroy", as: :sign_out
+  get 'sign_in', to: 'sessions#new', as: :sign_in
+  post 'sign_in', to: 'sessions#create'
+  get 'sign_up', to: 'registrations#new', as: :sign_up
+  post 'sign_up', to: 'registrations#create'
+  delete 'sign_out', to: 'sessions#destroy', as: :sign_out
 
   resources :artists, only: [:show]
   resources :albums, only: [:show] do
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "search", to: "search#index", as: :search
+  get 'search', to: 'search#index', as: :search
 
-  root "home#index"
+  root 'home#index'
 end

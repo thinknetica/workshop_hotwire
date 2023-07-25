@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Album < ApplicationRecord
   has_one_attached :cover
   has_many :tracks, dependent: :destroy, inverse_of: :album
@@ -5,7 +7,7 @@ class Album < ApplicationRecord
 
   belongs_to :artist, counter_cache: true
 
-  enum :kind, {lp: "lp", ep: "ep", live: "live", compilation: "compilation"}
+  enum :kind, { lp: 'lp', ep: 'ep', live: 'live', compilation: 'compilation' }
 
   validates :title, presence: true
 

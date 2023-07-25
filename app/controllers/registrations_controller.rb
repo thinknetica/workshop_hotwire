@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RegistrationsController < ApplicationController
-  layout "core"
+  layout 'core'
 
   def new
     @user = User.new
@@ -10,9 +12,9 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       reset_session
-      cookies.signed.permanent[:user_id] = {value: @user.id, httponly: true}
+      cookies.signed.permanent[:user_id] = { value: @user.id, httponly: true }
 
-      redirect_to root_path, notice: "Welcome! You have signed up successfully"
+      redirect_to root_path, notice: 'Welcome! You have signed up successfully'
     else
       render :new, status: :unprocessable_entity
     end

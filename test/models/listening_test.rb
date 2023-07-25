@@ -1,7 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class ListeningTest < ActiveSupport::TestCase
-  test "artist, album and track listenings counter cache" do
+  test 'artist, album and track listenings counter cache' do
     track = tracks(:smells_like)
     artist = artists(:nirvana)
     album = albums(:nevermind)

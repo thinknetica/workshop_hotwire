@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class LiveStation < ApplicationRecord
   has_many :live_station_tracks, dependent: :destroy, inverse_of: :live_station
-  has_many :tracks, -> { order(Arel.sql("live_station_tracks.position asc")) }, through: :live_station_tracks
+  has_many :tracks, -> { order(Arel.sql('live_station_tracks.position asc')) }, through: :live_station_tracks
   belongs_to :user
 
   has_one_attached :cover

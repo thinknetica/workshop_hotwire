@@ -150,6 +150,10 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    jetrockets-standard (1.29.0)
+      rubocop-rails
+      rubocop-rspec (~> 2.22.0)
+      standard (~> 1.29.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
@@ -171,6 +175,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.4)
     minitest (5.18.1)
     msgpack (1.7.2)
     net-imap (0.3.6)
@@ -183,6 +188,9 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.3)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.15.3-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
@@ -235,6 +243,10 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-capybara (2.18.0)
+      rubocop (~> 1.41)
+    rubocop-factory_bot (2.23.1)
+      rubocop (~> 1.33)
     rubocop-performance (1.18.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
@@ -242,6 +254,10 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
+    rubocop-rspec (2.22.0)
+      rubocop (~> 1.33)
+      rubocop-capybara (~> 2.17)
+      rubocop-factory_bot (~> 2.22)
     ruby-lsp (0.7.3)
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
@@ -259,11 +275,13 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.6.3)
+      mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
     sqlite3 (1.6.3-x86_64-darwin)
     sqlite3 (1.6.3-x86_64-linux)
-    standard (1.30.1)
+    standard (1.29.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.52.0)
@@ -279,6 +297,8 @@ GEM
       railties (>= 6.0.0)
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
+    tailwindcss-rails (2.0.30)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-aarch64-linux)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-arm64-darwin)
@@ -316,6 +336,7 @@ PLATFORMS
   aarch64-linux
   arm64-darwin-21
   arm64-darwin-22
+  ruby
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-darwin-22
@@ -329,6 +350,7 @@ DEPENDENCIES
   debug
   freezolite
   importmap-rails
+  jetrockets-standard
   litestack
   puma (~> 6.0)
   rails!

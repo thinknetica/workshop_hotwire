@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Track < ApplicationRecord
   belongs_to :album, counter_cache: true
   has_many :listenings, dependent: :destroy, inverse_of: :track
 
-  validates :title, length: {maximum: 255}
+  validates :title, length: { maximum: 255 }
 
   normalizes :title, with: -> { _1.squish }
 

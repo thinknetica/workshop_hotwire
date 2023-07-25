@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  layout "core"
+  layout 'core'
 
   before_action :authenticate, only: %i[destroy]
 
@@ -11,11 +13,11 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       reset_session
-      cookies.signed.permanent[:user_id] = {value: user.id, httponly: true}
+      cookies.signed.permanent[:user_id] = { value: user.id, httponly: true }
 
-      redirect_to root_path, notice: "Signed in successfully"
+      redirect_to root_path, notice: 'Signed in successfully'
     else
-      redirect_to sign_in_path(username_hint: params[:username]), alert: "That username or password is incorrect"
+      redirect_to sign_in_path(username_hint: params[:username]), alert: 'That username or password is incorrect'
     end
   end
 
@@ -23,6 +25,6 @@ class SessionsController < ApplicationController
     cookies.delete(:user_id)
     reset_session
 
-    redirect_to root_path, notice: "Signed out successfully"
+    redirect_to root_path, notice: 'Signed out successfully'
   end
 end

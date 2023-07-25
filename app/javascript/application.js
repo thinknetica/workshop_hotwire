@@ -7,9 +7,19 @@ let prevPath = window.location.pathname;
 document.addEventListener("turbo:before-render", (event) => {
   Turbo.navigator.currentVisit.scrolled = prevPath === window.location.pathname;
   prevPath = window.location.pathname;
+
   event.detail.render = async (prevEl, newEl) => {
     await new Promise((resolve) => setTimeout(() => resolve(), 0));
-    morphdom(prevEl, newEl);
+
+    morphdom(prevEl, newEl, {
+      onBeforeElUpdated: (fromEl, toEl) => {
+        if (fromEl.isEqualNode(toEl) || (fromEl.hasAttribute('data-turbo-morph-permanent') && fromEl.id === toEl.id)) {
+          console.log('not rendering', fromEl)
+          return false
+        }
+        return true
+      },
+    });
   };
 
   if (document.startViewTransition) {

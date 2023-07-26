@@ -1,11 +1,8 @@
 <%# locals: (track:, track_counter: nil, track_iteration: nil, deletable: false, enqueueble: false) -%>
-<li class="track">
+<li class="track" data-controller="track" data-track-id-value="<%= track.id %>" data-track-playing-class="playing">
   <span class="track--number">
-    <% if track.id == current_track&.id %>
-      <span class="track--number--text track--playing-indicator"></span>
-    <% else %>
-      <%= track_counter + 1 %>
-    <% end %>
+    <span class="track--playing-indicator"></span>
+    <span class="track--number--text"><%= track_counter + 1 %></span>
   </span>
   <% if current_user&.live_station&.live? %>
     <%= button_to play_live_station_track_path(track), method: :post, form_class: "track--title" do %>

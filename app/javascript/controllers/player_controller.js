@@ -12,6 +12,7 @@ function secondsToDuration(num) {
 // Connects to data-controller="player"
 export default class extends Controller {
   static targets = ["progress", "time"];
+  static outlets = ["track"];
   static values = { duration: Number, track: String, nextTrackUrl: String };
   static classes = ["playing"];
 
@@ -35,6 +36,14 @@ export default class extends Controller {
     this.audio.addEventListener("timeupdate", this.handleTimeUpdate);
     this.audio.addEventListener("ended", this.handleEnded);
     this.play();
+
+    for (let outlet of this.trackOutlets) {
+      outlet.togglePlayingIfMatch(this.trackValue);
+    }
+  }
+
+  trackOutletConnected(outlet, el) {
+    outlet.togglePlayingIfMatch(this.trackValue);
   }
 
   connect() {

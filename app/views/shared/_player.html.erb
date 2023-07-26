@@ -7,6 +7,7 @@
     data-player-track-value="<%= track&.id %>"
     data-player-playing-class="player-playing"
     data-player-next-track-url-value="<%= play_next_track_path(track) if track %>"
+    data-player-track-outlet=".track"
   >
     <% if track %>
       <div class="player--timeline" data-action="click->player#seek">

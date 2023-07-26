@@ -20,9 +20,17 @@
 }
 
 .track--playing-indicator {
-  @apply relative inline-flex rounded-full h-3 w-3 bg-secondary;
+  @apply relative inline-flex rounded-full h-3 w-3 bg-secondary hidden;
 
-  animation: track-playing 1s infinite;
+  animation: track-playing 1s infinite !important;
+}
+
+.track.playing .track--playing-indicator {
+  @apply inline-block;
+}
+
+.track.playing .track--number--text {
+  @apply hidden;
 }
 
 .track--title {

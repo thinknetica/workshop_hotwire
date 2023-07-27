@@ -1,7 +1,3 @@
-<%= turbo_stream.replace :flash do %>
-  <%= render partial: "layouts/flash" %>
-<% end %>
-
 <%= turbo_stream.update :player do %>
   <%= render partial: "player/player", locals: {track: @next_track} %>
 <% end %>

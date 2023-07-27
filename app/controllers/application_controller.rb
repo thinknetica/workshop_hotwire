@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
 
     @current_user = User.find_by(id: cookies.signed[:user_id])
   end
+
+  def dom_id(...) = ActionView::RecordIdentifier.dom_id(...)
 end

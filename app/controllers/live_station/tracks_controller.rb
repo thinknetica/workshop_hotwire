@@ -16,7 +16,12 @@ class LiveStation::TracksController < ApplicationController
 
     station.play_now(track)
 
-    render turbo_stream: turbo_stream.update("player", partial: "player/player", locals: {station:, track:, live: true})
+    Turbo::StreamsChannel.broadcast_update_to station, target: :player, partial: "player/player", locals: {station:, track:}
+
+    render turbo_stream: [
+      turbo_stream.update("player", partial: "player/player", locals: {station:, track:, live: true}),
+      turbo_stream.update(dom_id(station, :queue), partial: "live_stations/queue", locals: {station:})
+    ]
   end
 
   def destroy

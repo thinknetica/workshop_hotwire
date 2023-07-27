@@ -4,11 +4,11 @@
   data-player-duration-value="<%= track&.duration %>"
   data-player-track-value="<%= track&.id %>"
   data-player-playing-class="player-playing"
-  data-player-next-track-url-value="<%= play_next_track_path(track) if track && !station %>"
+  data-player-next-track-url-value="<%= live ? play_next_live_station_path : (!station && play_next_track_path(track))%>"
   data-player-track-outlet=".track"
 >
   <% if track %>
-    <div class="player--timeline" data-action="<%= "click->player#seek" unless station %>">
+    <div class="player--timeline" data-action="<%= "click->player#seek" if live || !station %>">
       <div class="player--timeline-progress" style="width:0%;" data-player-target="progress"></div>
     </div>
   <% end %>
@@ -38,6 +38,7 @@
             <%= station.name%>
           </span>
         </div>
+        <%= turbo_stream_from station %>
       <% end %>
     <% end %>
     <% if track %>

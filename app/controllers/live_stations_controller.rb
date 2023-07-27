@@ -33,7 +33,10 @@ class LiveStationsController < ApplicationController
 
     station.update!(live: true)
 
-    redirect_to live_station_path
+    render turbo_stream: [
+      turbo_stream.update("player", partial: "player/player", locals: {station:, track: station.current_track, live: true}),
+      turbo_stream.replace(dom_id(station, :info), partial: "info", locals: {station:})
+    ]
   end
 
   def stop
@@ -41,7 +44,26 @@ class LiveStationsController < ApplicationController
 
     station.update!(live: false)
 
-    redirect_to live_station_path
+    Turbo::StreamsChannel.broadcast_update_to station, target: :player, content: ""
+
+    render turbo_stream: [
+      turbo_stream.update("player", inline: ""),
+      turbo_stream.update(dom_id(station, :queue), partial: "queue", locals: {station:}),
+      turbo_stream.replace(dom_id(station, :info), partial: "info", locals: {station:})
+    ]
+  end
+
+  def play_next
+    station = current_user.live_station
+
+    track = station.play_next
+
+    Turbo::StreamsChannel.broadcast_update_to station, target: :player, partial: "player/player", locals: {station:, track:}
+
+    render turbo_stream: [
+      turbo_stream.update("player", partial: "player/player", locals: {station:, track:, live: true}),
+      turbo_stream.update(dom_id(station, :queue), partial: "live_stations/queue", locals: {station:})
+    ]
   end
 
   def update

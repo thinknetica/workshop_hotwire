@@ -1,34 +1,7 @@
-<div class="artist-header">
-  <div class="artist-image">
-    <% if @station.cover.attached? %>
-      <%= image_tag @station.cover %>
-    <% end %>
-  </div>
-  <div class="artist-info">
-    <div class="flex items-center">
-      <h1 class="text-header-2"><%= @station.name %></h1>
-      <%= link_to edit_live_station_path(@station), class: "icon-btn ml-2" do %>
-        <%= render "icons/edit" %>
-      <% end %>
-    </div>
-    <div class="mt-2">
-      <% if @station.live? %>
-        <%= form_with(url: stop_live_station_path(@station), method: :patch) do |f| %>
-          <%= f.submit "Stop streaming", class: "button button-secondary" %>
-        <% end %>
-      <% else %>
-        <%= form_with(url: start_live_station_path(@station), method: :patch) do |f| %>
-          <%= f.submit "Go live!", class: "button button-primary" %>
-        <% end %>
-      <% end%>
-    </div>
-  </div>
-</div>
+<%= render "info", station: @station %>
 
 <hr class="my-4">
 
 <h2 class="mt-4 text-header-2">Queue</h2>
 
-<ul class="tracks mt-2">
-  <%= render @station.tracks, deletable: true, enqueueble: false %>
-</ul>
+<%= render "queue", station: @station %>

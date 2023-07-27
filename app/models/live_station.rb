@@ -31,6 +31,7 @@ class LiveStation < ApplicationRecord
 
   def play_next
     live_station_tracks.order(position: :asc).first&.destroy
+    current_track
   end
 
   def current_track = tracks.first

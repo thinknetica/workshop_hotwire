@@ -1,0 +1,4 @@
+<%# locals: (station:) %>
+<ul id="<%= dom_id(station, :queue) %>" class="tracks mt-2">
+  <%= render collection: station.tracks, partial: "tracks/track", deletable: true, enqueueble: false %>
+</ul>

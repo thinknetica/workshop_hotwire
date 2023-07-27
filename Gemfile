@@ -15,6 +15,9 @@ gem "litestack"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.0"
 
+# Use AnyCable for better real-time experience
+gem "anycable-rails-core", require: ["anycable-rails"]
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 

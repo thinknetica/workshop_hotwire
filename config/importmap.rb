@@ -11,3 +11,7 @@ pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.1/d
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.8/src/index.js"
+pin "@anycable/turbo-stream", to: "https://ga.jspm.io/npm:@anycable/turbo-stream@0.3.2/index.js"
+pin "@anycable/core", to: "https://ga.jspm.io/npm:@anycable/core@0.7.1/index.js"
+pin "nanoevents", to: "https://ga.jspm.io/npm:nanoevents@7.0.1/index.js"
+pin "@anycable/web", to: "https://ga.jspm.io/npm:@anycable/web@0.7.0/index.js"

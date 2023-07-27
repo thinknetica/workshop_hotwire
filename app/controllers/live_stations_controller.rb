@@ -54,7 +54,7 @@ class LiveStationsController < ApplicationController
   def play
     station = LiveStation.find(params[:id])
 
-    render partial: "player/player", locals: {station:, track: station.current_track}
+    render turbo_stream: turbo_stream.update("player", partial: "player/player", locals: {station:, track: station.current_track})
   end
 
   private

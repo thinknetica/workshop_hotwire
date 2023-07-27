@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :tracks, only: [] do
-    get :play_next, on: :member
+    post :play_next, on: :member
     get :play, on: :member
   end
 

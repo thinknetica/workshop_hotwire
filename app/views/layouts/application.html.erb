@@ -7,11 +7,11 @@
 
   <%= render partial: "albums/aside" %>
 
-  <%- if current_user&.live_station&.live? %>
-    <%= render partial: "player/player", locals: {station: current_user.live_station, track: current_user.live_station.current_track, live: true} %>
-  <% else %>
-    <%= render partial: "player/player" %>
-  <% end %>
+  <div id="player" data-turbo-permanent class="contents">
+    <%- if current_user&.live_station&.live? %>
+      <%= render partial: "player/player", locals: {station: current_user.live_station, track: current_user.live_station.current_track, live: true} %>
+    <% end %>
+  </div>
 <%- end -%>
 
 <%= render template: "layouts/core" %>

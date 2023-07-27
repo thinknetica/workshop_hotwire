@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import FakeAudio from "fake_audio";
+import { FetchRequest } from "@rails/request.js";
 
 function secondsToDuration(num) {
   let mins = Math.floor(num / 60);
@@ -78,7 +79,7 @@ export default class extends Controller {
     this.pause();
 
     if (this.nextTrackUrlValue) {
-      Turbo.visit(this.nextTrackUrlValue, { frame: "player" });
+      this.fetchNextTrack(this.nextTrackUrlValue);
     }
   }
 
@@ -86,6 +87,16 @@ export default class extends Controller {
     const currentTime = this.audio.currentTime;
 
     this.updateProgress(currentTime);
+  }
+
+  async fetchNextTrack(url) {
+    const request = new FetchRequest("POST", url, {
+      responseKind: "turbo-stream",
+    });
+    const response = await request.perform();
+    if (!response.ok) {
+      console.error("Failed to load next track", response.status);
+    }
   }
 
   updateProgress(currentTime) {

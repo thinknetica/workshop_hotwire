@@ -2,17 +2,14 @@ class TracksController < ApplicationController
   def play
     track = Track.find(params[:id])
 
-    render partial: "player/player", locals: {track:}
+    render turbo_stream: turbo_stream.update("player", partial: "player/player", locals: {track:})
   end
 
   def play_next
     track = Track.find(params[:id])
 
-    # Make sure we do not cache the request
-    expires_now
+    @next_track = track.album.tracks.order(position: :asc).where("position > ?", track.position).first
 
-    next_track = track.album.tracks.order(position: :asc).where("position > ?", track.position).first
-
-    render partial: "player/player", locals: {track: next_track}
+    flash.now[:notice] = "You have reached the end of the album." unless @next_track
   end
 end

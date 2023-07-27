@@ -16,7 +16,7 @@ class LiveStation::TracksController < ApplicationController
 
     station.play_now(track)
 
-    render partial: "shared/player", locals: {station:, track:, live: true}
+    render partial: "player/player", locals: {station:, track:, live: true}
   end
 
   def destroy

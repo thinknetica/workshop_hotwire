@@ -23,18 +23,11 @@ export default class extends Controller {
   }
 
   trackValueChanged() {
-    if (this.audio) {
-      this.audio.removeEventListener("timeupdate", this.handleTimeUpdate);
-      this.audio.removeEventListener("ended", this.handleEnded);
-      this.audio.pause();
-      this.updateProgress(0);
-    }
-
+    this.disposeAudio();
     if (!this.trackValue) return;
 
     this.audio = new FakeAudio(this.durationValue);
-    this.audio.addEventListener("timeupdate", this.handleTimeUpdate);
-    this.audio.addEventListener("ended", this.handleEnded);
+    this.setupAudioListeners();
     this.play();
 
     for (let outlet of this.trackOutlets) {
@@ -48,14 +41,18 @@ export default class extends Controller {
 
   connect() {
     // Permanent element was re-attached to DOM
-    if (this.audio && this.playing) {
+    if (this.audio) {
+      this.setupAudioListeners();
+    }
+
+    if (this.playing) {
       this.play();
     }
   }
 
   disconnect() {
     if (this.audio) {
-      this.audio.pause();
+      this.removeAudioListeners();
     }
   }
 
@@ -97,5 +94,25 @@ export default class extends Controller {
     if (this.hasProgressTarget) this.progressTarget.style.width = `${percent}%`;
     if (this.hasTimeTarget)
       this.timeTarget.textContent = secondsToDuration(currentTime);
+  }
+
+  disposeAudio() {
+    if (!this.audio) return;
+
+    this.removeAudioListeners();
+    this.pause();
+    this.updateProgress(0);
+
+    delete this.audio;
+  }
+
+  setupAudioListeners() {
+    this.audio.addEventListener("timeupdate", this.handleTimeUpdate);
+    this.audio.addEventListener("ended", this.handleEnded);
+  }
+
+  removeAudioListeners() {
+    this.audio.removeEventListener("timeupdate", this.handleTimeUpdate);
+    this.audio.removeEventListener("ended", this.handleEnded);
   }
 }

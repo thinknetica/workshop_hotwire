@@ -9,6 +9,8 @@ class LiveStation < ApplicationRecord
 
   def enqueue(track)
     with_lock do
+      # first, remove track if already present
+      tracks.delete(track)
       live_station_tracks.create!(track:, position: tracks.count)
     end
   end

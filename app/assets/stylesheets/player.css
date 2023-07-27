@@ -84,3 +84,8 @@
 .player--radio {
   @apply flex flex-row items-end mr-4;
 }
+
+.player--signal-icon {
+  @apply text-secondary;
+  animation: pulse 1s infinite;
+}

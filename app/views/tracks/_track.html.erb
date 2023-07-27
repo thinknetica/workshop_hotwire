@@ -5,7 +5,7 @@
     <span class="track--number--text"><%= track_counter + 1 %></span>
   </span>
   <% if current_user&.live_station&.live? %>
-    <%= button_to play_live_station_track_path(track), method: :post, form_class: "track--title" do %>
+    <%= button_to play_live_station_track_path(track), method: :post, form: {class: "track--title", "data-turbo-frame" => "player"} do %>
       <%= track.title %>
     <% end %>
   <% else %>

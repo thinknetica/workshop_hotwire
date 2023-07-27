@@ -16,9 +16,7 @@ class LiveStation::TracksController < ApplicationController
 
     station.play_now(track)
 
-    session[:track_id] = track.id
-
-    render partial: "shared/player", locals: {track:}
+    render partial: "shared/player", locals: {station:, track:, live: true}
   end
 
   def destroy

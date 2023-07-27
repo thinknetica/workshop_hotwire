@@ -94,7 +94,8 @@ export default class extends Controller {
   updateProgress(currentTime) {
     const percent = (currentTime * 100) / this.durationValue;
 
-    this.progressTarget.style.width = `${percent}%`;
-    this.timeTarget.textContent = secondsToDuration(currentTime);
+    if (this.hasProgressTarget) this.progressTarget.style.width = `${percent}%`;
+    if (this.hasTimeTarget)
+      this.timeTarget.textContent = secondsToDuration(currentTime);
   }
 }

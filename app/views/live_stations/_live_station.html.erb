@@ -3,7 +3,7 @@
   <div class="album--content">
     <div class="album--cover">
       <div class="album--controls-container">
-        <%= link_to params.to_unsafe_h.merge(station_id: live_station.id), class: "album--controls" do %>
+        <%= link_to play_live_station_path(live_station), class: "album--controls", data: {"turbo-frame" => "player"} do %>
           <span class="album--play">
             <%= render "icons/play" %>
           </span>

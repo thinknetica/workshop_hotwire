@@ -1,16 +1,16 @@
-<%# locals: (track:, station: nil) -%>
-<%= turbo_frame_tag :player, target: "_top" do %>
-  <div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>"
-    data-turbo-permanent
+<%# locals: (track: nil, station: nil, live: false) -%>
+<%= turbo_frame_tag :player, target: "_top", "data-turbo-permanent" => "" do %>
+  <% next unless station || track %>
+  <div class="player"
     data-controller="player"
     data-player-duration-value="<%= track&.duration %>"
     data-player-track-value="<%= track&.id %>"
     data-player-playing-class="player-playing"
-    data-player-next-track-url-value="<%= play_next_track_path(track) if track %>"
+    data-player-next-track-url-value="<%= play_next_track_path(track) if track && !station %>"
     data-player-track-outlet=".track"
   >
     <% if track %>
-      <div class="player--timeline" data-action="click->player#seek">
+      <div class="player--timeline" data-action="<%= "click->player#seek" unless station %>">
         <div class="player--timeline-progress" style="width:0%;" data-player-target="progress"></div>
       </div>
     <% end %>
@@ -26,12 +26,21 @@
     <% end %>
     <div class="player--track">
       <% if station %>
-      <div class="player--radio">
-        <%= render "icons/radio" %>
-        <span class="player--author ml-2">
-          <%= station.name%>
-        </span>
-      </div>
+        <% if live %>
+          <div class="player--radio">
+            <span class="player--signal-icon">
+              <%= render "icons/signal" %>
+            </span>
+            <%= link_to "Live!", live_station_path, class: "player--title ml-2" %>
+          </div>
+        <% else %>
+          <div class="player--radio">
+            <%= render "icons/radio" %>
+            <span class="player--author ml-2">
+              <%= station.name%>
+            </span>
+          </div>
+        <% end %>
       <% end %>
       <% if track %>
         <% if track.album.cover.attached? %>

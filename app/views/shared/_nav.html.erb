@@ -10,7 +10,7 @@
       <%= link_to live_station_path, class: "nav--menu" do %>
         <span>My Station</span>
         <% if current_user.live_station&.live? %>
-          <span class="track--playing-indicator"></span>
+          <span class="track--playing-indicator inline-block"></span>
         <% end %>
       <% end %>
     <%- end -%>

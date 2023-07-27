@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :live_stations, only: [] do
+    get :play, on: :member
+  end
+
   resources :tracks, only: [] do
     get :play_next, on: :member
     get :play, on: :member

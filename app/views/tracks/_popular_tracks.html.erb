@@ -1,0 +1,19 @@
+<%# locals: (artist:, tracks:, extended_list: false) -%>
+<%= turbo_frame_tag dom_id(artist, :popular_tracks), class: 'popular-tracks', target: "_top", "transition-name" => "load-popular-tracks" do %>
+  <h2 class="mt-4 text-header-2">Popular</h2>
+
+  <div transition-id=<%= extended_list ? 'extended_track_list' : 'track_list' %>>
+    <ul class="tracks mt-2">
+      <%= render tracks, enqueueble: true %>
+    </ul>
+
+    <% unless extended_list %>
+      <li class="track">
+        <span class="track--number"></span>
+        <%= link_to "Load more", artist_path(artist),
+                    class: "text-secondary hover:text-primary transition-colors",
+                    data: { "turbo-frame" => dom_id(artist, :tracks), "turbo-action" => "advance" } %>
+      </li>
+    <% end %>
+  </div>
+<% end %>

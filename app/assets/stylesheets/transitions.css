@@ -2,6 +2,10 @@
   view-transition-name: aside;
 }
 
+.popular-tracks {
+  view-transition-name: load-popular-tracks;
+}
+
 /* Use named view transitions for nav and player to put them onto separate pseudo-trees upper than aside and main */
 .nav {
   view-transition-name: nav;
@@ -34,6 +38,14 @@ html[transition="aside"]::view-transition-old(aside) {
 
 html[transition="aside"]::view-transition-new(aside) {
   animation: 300ms ease-out 100ms both full-slide-from-right, 300ms ease-in 0ms both fade-in;
+}
+
+html[transition="load-popular-tracks"]::view-transition-old(load-popular-tracks) {
+  animation: 500ms ease-out 0ms both fade-out;
+}
+
+html[transition="load-popular-tracks"]::view-transition-new(load-popular-tracks) {
+  animation: 300ms ease-in 0ms both fade-in;
 }
 
 @media (prefers-reduced-motion) {

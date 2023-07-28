@@ -24,6 +24,9 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
+# RPC for Hotwire's Turbo [https://github.com/hopsoft/turbo_boost-commands]
+gem "turbo_boost-commands"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 

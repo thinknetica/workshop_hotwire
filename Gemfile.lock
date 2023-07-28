@@ -308,6 +308,13 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
+    turbo_boost-commands (0.0.11)
+      rails (>= 6.1)
+      turbo-rails (>= 1.1)
+      turbo_boost-streams (>= 0.0.8)
+    turbo_boost-streams (0.0.8)
+      rails (>= 6.1)
+      turbo-rails (>= 1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
@@ -354,6 +361,7 @@ DEPENDENCIES
   stimulus-rails
   tailwindcss-rails
   turbo-rails
+  turbo_boost-commands
   web-console
 
 RUBY VERSION

@@ -1,5 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo";
+import "@turbo-boost/commands";
 import "turbo-morphdom";
 import "controllers";
 import { createCable } from "@anycable/web";

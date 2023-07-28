@@ -31,5 +31,8 @@ Rails.application.routes.draw do
 
   get "search", to: "search#index", as: :search
 
+  # Workaround to support POST to TurboBoost commands
+  post "/", to: "home#index"
+
   root "home#index"
 end

@@ -15,3 +15,4 @@ pin "@anycable/turbo-stream", to: "https://ga.jspm.io/npm:@anycable/turbo-stream
 pin "@anycable/core", to: "https://ga.jspm.io/npm:@anycable/core@0.7.1/index.js"
 pin "nanoevents", to: "https://ga.jspm.io/npm:nanoevents@7.0.1/index.js"
 pin "@anycable/web", to: "https://ga.jspm.io/npm:@anycable/web@0.7.0/index.js"
+pin "@turbo-boost/commands", to: "https://ga.jspm.io/npm:@turbo-boost/commands@0.0.11/app/assets/builds/@turbo-boost/commands.js"

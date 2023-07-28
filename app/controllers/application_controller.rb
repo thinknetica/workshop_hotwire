@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
 
-  private
-
   def authenticate
     redirect_to sign_in_path unless current_user
   end

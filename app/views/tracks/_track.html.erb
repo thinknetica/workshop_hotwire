@@ -4,12 +4,8 @@
     <span class="track--playing-indicator"></span>
     <span class="track--number--text"><%= track_counter + 1 %></span>
   </span>
-  <% if current_user&.live_station&.live? %>
-    <%= button_to play_live_station_track_path(track), method: :post, form: {class: "track--title"} do %>
-      <%= track.title %>
-    <% end %>
-  <% else %>
-    <%= link_to track.title, play_track_path(track), class: "track--title", data: {"turbo-stream" => "true"} %>
+  <%= button_to "#", method: :post, form: {class: "track--title", data: {"track" => track.id, "turbo-command" => "PlayerCommand#play"}} do %>
+    <%= track.title %>
   <% end %>
   <% if current_user %>
     <span class="track--actions">

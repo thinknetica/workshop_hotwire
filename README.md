@@ -8,7 +8,7 @@ The `main` branch contains only the base code (before the workshop). For code co
 
 - [day-1](https://github.com/thinknetica/workshop_hotwire/tree/day-1)
 - [day-2](https://github.com/thinknetica/workshop_hotwire/tree/day-2)
-- day-3 (_coming soon_)
+- [day-3](https://github.com/thinknetica/workshop_hotwire/tree/day-3)
 
 ## Requirements
 

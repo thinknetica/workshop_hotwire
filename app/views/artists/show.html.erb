@@ -19,13 +19,7 @@
 <hr class="my-4">
 
 <h2 class="mt-4 text-header-2">Popular</h2>
-<ul class="tracks mt-2">
-  <%= render tracks, enqueueble: true %>
-  <li class="track">
-    <span class="track--number"></span>
-    <a href="#" class="text-secondary hover:text-primary transition-colors">Load more</a>
-  </li>
-</ul>
+<%= render partial: "tracks", locals: {artist:, tracks:} %>
 
 <hr class="my-4"/>
 

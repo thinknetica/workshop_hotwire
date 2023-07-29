@@ -20,11 +20,9 @@
 
 <h2 class="mt-4 text-header-2">Popular</h2>
 <ul class="tracks mt-2">
-  <%= render tracks, enqueueble: true %>
-  <li class="track">
-    <span class="track--number"></span>
-    <a href="#" class="text-secondary hover:text-primary transition-colors">Load more</a>
-  </li>
+  <%= turbo_frame_tag "load_more_frame_0", src: load_more_artist_path(artist, page: 0) do %>
+    <p>Loading...</p>
+  <% end %>
 </ul>
 
 <hr class="my-4"/>

@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "load_more_frame_#{page}" do %>
+  <% tracks.each_with_index do |track, i| %>
+    <%= render track, track_counter: page * 5 + i, enqueueble: true %>
+  <% end %>
+  <% if next_page %>
+    <%= turbo_frame_tag "load_more_frame_#{page + 1}" do %>
+      <%= link_to 'Load more', load_more_artist_path(artist, page: page + 1), id: 'load_more', class: "text-secondary hover:text-primary transition-colors" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -27,6 +27,10 @@ module PencilMc
 
     config.x.debug_html = ENV["DEBUG_HTML"].in?(%w[1 true yes])
 
+    # Token validation sometimes start to randomly fail
+    # See https://github.com/hopsoft/turbo_boost-commands/issues/36
+    config.turbo_boost_commands.validate_client_token = false
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

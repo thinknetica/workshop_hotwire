@@ -1,5 +1,5 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-turbo-permanent>
+<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-turbo-morphdom-permanent>
   <% if track %>
     <div class="player--timeline">
       <div class="player--timeline-progress" style="width:11%;"></div>
@@ -43,6 +43,7 @@
     </div>
     <script>
       (() => {
+        console.log("script works");
         let currentTime = 0;
         const el = document.querySelector(".player--current-time");
         setInterval(() => {
@@ -52,7 +53,7 @@
           if (mins < 10) mins = "0" + mins;
           if (secs < 10) secs = "0" + secs;
           el.innerHTML = `${mins}:${secs}`;
-        }, 1000)
+        }, 1000);
       })();
     </script>
   <% end %>

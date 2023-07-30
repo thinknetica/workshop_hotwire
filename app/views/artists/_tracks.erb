@@ -1,0 +1,13 @@
+<%# locals: (artist:, tracks:) -%>
+<%= turbo_frame_tag :tracks, target: "_top" do %>
+  <ul class="tracks mt-2">
+    <%= render tracks, enqueueble: true %>
+    <li class="track">
+      <span class="track--number"></span>
+        <% if tracks.size < 20 %>
+          <%= link_to 'Load more', artist_path(artist, tracks_number: tracks.size), class:"btn btn-success", data: {"turbo-frame" => "_self", "turbo-action" => "advance"} %>
+        <% end %>
+      </a>
+    </li>
+  </ul>
+<% end %>

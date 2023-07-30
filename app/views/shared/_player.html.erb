@@ -1,5 +1,5 @@
 <%# locals: (track:, station: nil) -%>
-<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-turbo-permanent>
+<div class="player" id="<%= dom_id(station || track, "player_#{track.id}") %>" data-morph-permanent>
   <% if track %>
     <div class="player--timeline">
       <div class="player--timeline-progress" style="width:11%;"></div>

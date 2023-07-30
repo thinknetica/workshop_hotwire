@@ -1,5 +1,5 @@
 <%# locals: (album: nil) -%>
-<%= turbo_frame_tag :aside, class: "aside", target: "_top", data: {"turbo-permanent" => true}, "transition-name" => "aside" do %>
+<%= turbo_frame_tag :aside, class: "aside", target: "_top", data: {"morph-permanent" => true}, "transition-name" => "aside" do %>
   <% next unless album %>
   <div transition-id="<%= album.id %>">
     <div class="album-info">

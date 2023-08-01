@@ -1,0 +1,16 @@
+<%# locals: (artist:, tracks:) -%>
+<%= turbo_frame_tag :tracks, loading="lazy", target: "_top" do %>
+  <%=
+    link_to 'Show all',
+    tracks_artist_path(artist),
+    class:"btn btn-success",
+    data: {"turbo-frame" => "_self", "turbo-action" => "advance"}
+  %>
+  <ul class="tracks mt-2">
+    <%= render tracks, enqueueble: true %>
+    <li class="track">
+      <span class="track--number"></span>
+      <a href="#" class="text-secondary hover:text-primary transition-colors">Load more</a></a>
+    </li>
+  </ul>
+<% end %>

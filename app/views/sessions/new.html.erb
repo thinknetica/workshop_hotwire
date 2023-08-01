@@ -1,19 +1,36 @@
-<div class="h-full w-full min-h-screen t-0 absolute bg-primary">
-  <div class="login-form mt-20">
-    <div class="login-form--back">
-    </div>
-    <div class="login-form--content">
-      <div class="login-form--logo">
+<div data-controller="password-visibility">
+  <div class="h-full w-full min-h-screen t-0 absolute bg-primary">
+    <div class="login-form mt-20">
+      <div class="login-form--back">
       </div>
-      <h2 class="text-header-2 text-center">Welcome back!</h2>
-      <%= form_with(url: sign_in_path) do |f| %>
-        <%= f.text_field :username, value: params[:username_hint], require: true, autofocus: true, autocomplete: "username", class: "input mt-2", placeholder: "Username" %>
-        <%= f.password_field :password, required: true, autocomplete: "current-password", class: "input mt-2", placeholder: "*****" %>
-        <div class="flex flex-row justify-between items-baseline">
-          <%= f.submit "Log in", class: "button button-primary mt-2" %>
-          <%= link_to "Sign up", sign_up_path, class: "text-small opacity-50 hover:opacity-100" %>
+      <div class="login-form--content">
+        <div class="login-form--logo">
         </div>
-      <% end %>
+        <h2 class="text-header-2 text-center">Welcome back!</h2>
+        <%= form_with(url: sign_in_path) do |f| %>
+          <%= f.text_field :username, value: params[:username_hint], require: true, autofocus: true, autocomplete: "username", class: "input mt-2", placeholder: "Username" %>
+          <%= f.password_field :password,
+                               required: true,
+                               autocomplete: "current-password",
+                               class: "input mt-2",
+                               placeholder: "*****",
+                               "data-password-visibility-target" => "input",
+                               "spellcheck" => false %>
+
+          <button type="button" data-action="password-visibility#toggle">
+            <span data-password-visibility-target="icon">
+              <%= render "icons/eye" %>
+            </span>
+            <span data-password-visibility-target="icon" class="hidden">
+              <%= render "icons/eye_slashed" %>
+            </span>
+          </button>
+          <div class="flex flex-row justify-between items-baseline">
+            <%= f.submit "Log in", class: "button button-primary mt-2" %>
+            <%= link_to "Sign up", sign_up_path, class: "text-small opacity-50 hover:opacity-100" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

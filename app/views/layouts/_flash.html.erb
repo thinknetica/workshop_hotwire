@@ -3,6 +3,9 @@
   <div class="flex justify-center">
     <% if flash[:notice] %>
       <div class="flash notice" role="alert" data-turbo-temporary data-controller="removeable" data-removeable-after-value="5">
+        <span class="notice-btn" data-action="click->removeable#remove">
+          <%= render "icons/close" %>
+        </span>
         <p class="text-small"><%= flash[:notice] %></p>
       </div>
     <% end %>

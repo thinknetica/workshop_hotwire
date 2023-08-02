@@ -35,4 +35,22 @@ class LiveStation < ApplicationRecord
   end
 
   def current_track = tracks.first
+
+  def listeners_online
+    Cache.store.get(listeners_key)&.to_i || 0
+  end
+
+  def update_listeners_count(count)
+    Cache.store.set(listeners_key, count)
+  end
+
+  def reset_listeners_count
+    Cache.store.set(listeners_key, 0)
+  end
+
+  private
+
+  def listeners_key
+    "pencil:live_station#{id}:listeners"
+  end
 end

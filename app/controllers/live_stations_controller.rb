@@ -51,6 +51,8 @@ class LiveStationsController < ApplicationController
       turbo_stream.update(dom_id(station, :queue), partial: "queue", locals: {station:}),
       turbo_stream.replace(dom_id(station, :info), partial: "info", locals: {station:})
     ]
+
+    station.reset_listeners
   end
 
   def play_next

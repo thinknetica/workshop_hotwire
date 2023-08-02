@@ -14,7 +14,7 @@ function secondsToDuration(num) {
 export default class extends Controller {
   static targets = ["progress", "time"];
   static outlets = ["track"];
-  static values = { duration: Number, track: String, nextTrackUrl: String };
+  static values = { duration: Number, track: String, nextTrackUrl: String, station: Number };
   static classes = ["playing"];
 
   initialize() {

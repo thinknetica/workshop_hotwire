@@ -34,5 +34,22 @@ class LiveStation < ApplicationRecord
     current_track
   end
 
+  def listeners
+    litecache.get("station-#{id}").to_i
+  end
+
+  def add_listener!(n = 1)
+    return if listeners + n < 0
+    litecache.set("station-#{id}", listeners + n)
+  end
+
+  def litecache
+    @litecache ||= Litecache.new
+  end
+
+  def reset_listeners
+    litecache.set("station-#{id}", 0)
+  end
+
   def current_track = tracks.first
 end

@@ -89,3 +89,19 @@
   @apply text-secondary;
   animation: pulse 1s infinite;
 }
+
+.player--listeners {
+  @apply text-white text-small w-full flex flex-row items-center bg-primary rounded-md ml-2;
+}
+
+.player--listeners--icon {
+  @apply text-white flex items-center;
+}
+
+.player--listeners--icon > svg {
+  @apply h-5;
+}
+
+.player--listeners--count {
+  @apply ml-1 font-semibold;
+}

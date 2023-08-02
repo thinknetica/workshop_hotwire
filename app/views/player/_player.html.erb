@@ -1,4 +1,4 @@
-<%# locals: (track:, station: nil, live: false) -%>
+<%# locals: (track:, station: nil, live: false, listeners_count: 0) -%>
 <div class="player"
   data-controller="player"
   data-player-duration-value="<%= track&.duration %>"
@@ -24,6 +24,9 @@
   <% end %>
   <div class="player--track">
     <% if station %>
+      <div data-controller="listenable"
+           data-listenable-station-value="<%= station&.id %>"
+           data-listenable-target="count">
       <% if live %>
         <div class="player--radio">
           <span class="player--signal-icon">
@@ -34,7 +37,9 @@
             <span class="player--listeners--icon">
               <%= render "icons/listeners_counter" %>
             </span>
-            <span class="player--listeners--count">3</span>
+            <span id="listeners-count-id" class="player--listeners--count">
+              1
+            </span>
           </span>
         </div>
       <% else %>
@@ -46,6 +51,7 @@
         </div>
         <%= turbo_stream_from station %>
       <% end %>
+      </div>
     <% end %>
     <% if track %>
       <% if track.album.cover.attached? %>

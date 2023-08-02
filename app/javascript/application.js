@@ -16,3 +16,4 @@ const cable = createCable({
 });
 
 start(cable);
+import "channels"

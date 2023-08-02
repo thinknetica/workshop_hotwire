@@ -30,6 +30,12 @@
             <%= render "icons/signal" %>
           </span>
           <%= link_to "Live!", live_station_path, class: "player--title ml-2" %>
+          <span class="player--listeners pr-1.5">
+            <span class="player--listeners--icon">
+              <%= render "icons/listeners_counter" %>
+            </span>
+            <span class="player--listeners--count">3</span>
+          </span>
         </div>
       <% else %>
         <div class="player--radio">

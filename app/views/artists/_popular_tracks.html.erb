@@ -4,7 +4,7 @@
   <ul class="tracks mt-2">
     <%= render tracks, enqueueble: true %>
 
-    <% if params[:popular_tracks_limit].blank? %>
+    <% if has_more_popular_tracks? %>
       <li class="track">
         <span class="track--number"></span>
         <%= link_to "Load more", url_for(popular_tracks_limit: 10), class: "text-secondary hover:text-primary transition-colors" %>

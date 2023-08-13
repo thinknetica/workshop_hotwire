@@ -1,0 +1,18 @@
+<%# locals: (artist:) -%>
+<div class="artist-header">
+  <div class="artist-image">
+    <% if artist.cover.attached? %>
+      <%= image_tag artist.cover %>
+    <% end %>
+  </div>
+  <div class="artist-info">
+    <div class="flex items-center">
+      <h1 class="text-header-2"><%= artist.name %></h1>
+    </div>
+    <div>
+      <% artist.tags.each do |tag| %>
+        <span class="meta"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

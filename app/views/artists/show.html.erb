@@ -18,7 +18,10 @@
 
 <hr class="my-4">
 
-<h2 class="mt-4 text-header-2">Popular</h2>
+<div class="flex items-baseline justify-between">
+  <h2 class="text-header-2">Popular</h2>
+  <%= link_to "See all", "#", class: "text-secondary hover:text-primary transition-colors text-sm" %>
+</div>
 <ul class="tracks mt-2">
   <%= render tracks, enqueueble: true %>
   <li class="track">

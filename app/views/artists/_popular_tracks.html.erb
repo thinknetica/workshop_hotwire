@@ -1,0 +1,12 @@
+<%# locals: (artist:, tracks:) -%>
+<%= turbo_frame_tag dom_id(artist, "popular-tracks") do %>
+  <h2 class="mt-4 text-header-2">Popular</h2>
+  <ul class="tracks mt-2">
+    <%= render tracks, enqueueble: true %>
+
+    <li class="track">
+      <span class="track--number"></span>
+      <%= link_to "Load more", url_for, class: "text-secondary hover:text-primary transition-colors" %>
+    </li>
+  </ul>
+<% end %>

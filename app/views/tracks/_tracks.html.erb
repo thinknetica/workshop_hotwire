@@ -1,0 +1,8 @@
+<%# locals: (artist:, tracks:) -%>
+<%= turbo_frame_tag dom_id(artist, "tracks_page_#{current_page}") do %>
+  <%= render tracks, enqueueble: true %>
+
+  <% if has_next_page? %>
+    <%= turbo_frame_tag dom_id(artist, "tracks_page_#{next_page}"), src: artist_tracks_path(artist, page: next_page), loading: :lazy %>
+  <% end %>
+<% end %>

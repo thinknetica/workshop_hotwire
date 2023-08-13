@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   post "sign_up", to: "registrations#create"
   delete "sign_out", to: "sessions#destroy", as: :sign_out
 
-  resources :artists, only: [:show]
+  resources :artists, only: [:show] do
+    resources :tracks, only: [:index]
+  end
+
   resources :albums, only: [:show] do
     patch :play, on: :member
   end

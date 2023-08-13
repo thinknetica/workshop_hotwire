@@ -9,7 +9,13 @@ document.addEventListener("turbo:before-render", (event) => {
   prevPath = window.location.pathname;
   event.detail.render = async (prevEl, newEl) => {
     await new Promise((resolve) => setTimeout(() => resolve(), 0));
-    morphdom(prevEl, newEl);
+    morphdom(prevEl, newEl, {
+      onBeforeElUpdated(fromEl, toEl) {
+        if (fromEl === toEl) return false;
+
+        return !fromEl.hasAttribute('data-turbo-permanent-morphdom');
+      }
+    });
   };
 
   if (document.startViewTransition) {

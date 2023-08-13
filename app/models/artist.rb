@@ -3,6 +3,10 @@ class Artist < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :tracks, through: :albums
   has_many :listenings, through: :tracks
+  has_many :popular_tracks, -> { popularity_ordered.limit(10) },
+    class_name: "Track",
+    through: :albums,
+    source: :tracks
 
   validates :name, presence: true, uniqueness: true
 

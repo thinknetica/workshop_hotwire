@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   def show
     artist = Artist.find(params[:id])
     albums = selected_albums(artist.albums, params[:album_type]).with_attached_cover.preload(:artist)
-    tracks = artist.tracks.popularity_ordered.limit(popular_tracks_limit)
+    tracks = artist.popular_tracks.limit(popular_tracks_limit)
 
     if turbo_frame_request? && turbo_frame_request_id.include?("discography")
       render partial: "discography", locals: {artist:, albums:}

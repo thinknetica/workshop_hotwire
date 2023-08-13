@@ -6,7 +6,7 @@
 
     <li class="track">
       <span class="track--number"></span>
-      <%= link_to "Load more", url_for, class: "text-secondary hover:text-primary transition-colors" %>
+      <%= link_to "Load more", url_for(popular_tracks_limit: 10), class: "text-secondary hover:text-primary transition-colors" %>
     </li>
   </ul>
 <% end %>
